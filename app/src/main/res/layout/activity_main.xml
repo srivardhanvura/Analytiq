@@ -195,11 +195,37 @@
             android:text="Variable mean and sd"
             android:textAllCaps="false" />
 
+        <TextView
+            android:id="@+id/txtYtm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/normalWithoutActivity"
+            android:layout_margin="10dp"
+            android:text="YTM"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/normalWithoutActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtYtm"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/ytmActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtYtm"
+            android:layout_marginLeft="15dp"
+            android:text="YTM"
+            android:textAllCaps="false" />
+
         <Button
             android:id="@+id/dep_text_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/normalWithoutActivity"
+            android:layout_below="@id/ytmActivity"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:text="Depreciation text 1" />

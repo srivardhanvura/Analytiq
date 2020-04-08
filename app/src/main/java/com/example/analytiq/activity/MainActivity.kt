@@ -93,5 +93,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, NormalDistriWithMean::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.ytmActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, YTMActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.NormalDistriWithMean"></activity>
+        <activity android:name=".activity.YTMActivity"></activity>
+        <activity android:name=".activity.NormalDistriWithMean" />
         <activity android:name=".activity.NormalDistriActivity" />
         <activity
             android:name=".activity.NPVText"

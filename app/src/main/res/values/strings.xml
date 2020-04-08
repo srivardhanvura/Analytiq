@@ -44,4 +44,5 @@ The rate of Depreciation =\n\n
     <string name="npv1"><u>NPV and IRR</u></string>
     <string name="npv2">NPV is <b>calculated</b> by taking the difference between the present value of cash inflows and present value of cash outflows over a period of time. As the name suggests, <b>net present value</b> is nothing but net off of the present value of cash inflows and outflows by discounting the flows at a specified rate.\n\n\n1  <b>IRR</b>  is the rate of growth a project is expected to generate.\n2.	<b>IRR</b> is calculated by the condition that the discount rate is set such that the NPV = 0 for a project.\n3.	<b>IRR</b>  is used in capital budgeting to decide which projects or investments to undertake and which to forgo
 </string>
+
 </resources>
