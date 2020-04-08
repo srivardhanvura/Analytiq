@@ -99,5 +99,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, YTMActivity::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.corrActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, CorrelationActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
