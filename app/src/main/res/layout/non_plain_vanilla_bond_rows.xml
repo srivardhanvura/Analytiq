@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    <TextView-->
+    <!--        android:layout_width="36dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:layout_height="wrap_content"/>-->
+    <EditText
+        android:id="@+id/t"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberDecimal"/>
+    <EditText
+        android:id="@+id/cf"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/pv"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="numberDecimal"/>
+</TableRow>
