@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "738993189611",
+    "firebase_url": "https://analytiq-38d63.firebaseio.com",
+    "project_id": "analytiq-38d63",
+    "storage_bucket": "analytiq-38d63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738993189611:android:9ab5fda2d2b64483d304ae",
+        "android_client_info": {
+          "package_name": "com.example.analytiq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738993189611-n1kvivljlavv4fcm5e72rn7o9i6jjrsi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.analytiq",
+            "certificate_hash": "ba8160854a69ba04f949f2fc24b22be1578a2a5a"
+          }
+        },
+        {
+          "client_id": "738993189611-mfsgauff233319jkt1lf29d15mpbt072.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXPoEdCdUbZVj5eG2-EoPM0tGgQoWynEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738993189611-mfsgauff233319jkt1lf29d15mpbt072.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

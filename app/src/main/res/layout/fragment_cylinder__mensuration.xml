@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cylin_scroll_view"
+    android:scrollbars="none"
+    tools:context=".fragment.Cylinder_Mensuration">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Height"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/cylinder_hei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:hint="Height"
+            android:inputType="numberDecimal"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/txtCylinRad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cylinder_hei"
+            android:layout_marginTop="20dp"
+            android:text="Radius"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/cylinder_rad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtCylinRad"
+            android:hint="Radius"
+            android:inputType="numberDecimal"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tsa_cylin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cylinder_rad"
+            android:layout_marginTop="10dp"
+            android:text="TSA"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/lsa_cylin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tsa_cylin"
+            android:layout_marginTop="10dp"
+            android:text="LSA"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/vol_cylin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lsa_cylin"
+            android:layout_marginTop="10dp"
+            android:text="Volume"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/cylin_btn"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_below="@id/vol_cylin"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_rounded"
+            android:text="Calculate"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</ScrollView>

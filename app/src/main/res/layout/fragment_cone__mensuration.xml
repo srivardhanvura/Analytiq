@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.Cone_Mensuration"
+    android:id="@+id/cone_scroll_view"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Height"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/cone_hei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:hint="Height"
+            android:inputType="numberDecimal"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/txtConeRad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cone_hei"
+            android:layout_marginTop="20dp"
+            android:text="Radius"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/cone_rad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtConeRad"
+            android:hint="Radius"
+            android:inputType="numberDecimal"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tsa_cone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cone_rad"
+            android:layout_marginTop="10dp"
+            android:text="TSA"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/lsa_cone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tsa_cone"
+            android:layout_marginTop="10dp"
+            android:text="LSA"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/vol_cone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lsa_cone"
+            android:layout_marginTop="10dp"
+            android:text="Volume"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/slant_cone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vol_cone"
+            android:layout_marginTop="10dp"
+            android:text="Volume"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/cone_btn"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_below="@id/slant_cone"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_rounded"
+            android:text="Calculate"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
+</ScrollView>

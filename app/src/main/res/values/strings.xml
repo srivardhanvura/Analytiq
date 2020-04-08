@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Analytiq</string>
+
+    <string name="first">The monetary value of an asset decreases over time due to use, wear and tear or obsolescence. This decrease is measured as depreciation.\n \n
+Depreciation, i.e. a decrease in an asset\'s value, may be caused by a number of other factors as well such as unfavorable market conditions, etc. Machinery, equipment, currency are some examples of assets that are likely to depreciate over a specific period of time. Opposite of depreciation is appreciation which is increase in the value of an asset over a period of time.\n \n
+the most common <b><u>methods</u></b>" used to calculate <b>depreciation</b> are straight-line, units-of-production, sum-of-years digits, and double-declining balance, an accelerated <b>depreciation</b> <b>methods</b>. The Modified Accelerated Cost Recovery System (MACRS) is the current tax <b>depreciation</b> system used in the United States.</string>
+    <string name="depreciation"><u>Depreciation</u></string>
+    <string name="depreciationn"><u>Depreciation</u></string>
+    <string name="aurkuch"> <b><u>Methods</u></b>\n\n
+•	Straight Line Method\n
+•	Diminishing Balance Method\n
+•	Units of Production Method\n
+•	Annuity Method\n
+•	Sinking Fund Method\n
+•	Profit or Loss on Disposal of Asset\n
+•	Change in Method of Depreciation\n \n \nAccording to the Straight line method, the cost of the asset is written off equally during its useful life. Therefore, an equal amount of depreciation is charged every year throughout the useful life of an asset. After the useful life of the asset, its value becomes nil or equal to its residual value. Thus, this method is also called Fixed Installment Method or Fixed percentage on original cost method.\n\nAccording to the Diminishing Balance Method, depreciation is charged at a fixed percentage on the book value of the asset. As the book value reduces every year, it is also known as the Reducing Balance Method or Written-down Value Method.
+\n\n\n"           Amount of Depreciation ="\n\n
+
+
+
+</string>
+    <string name="_2kuch">(Cost of Asset – Salvage Value)\n
+------------------------------------------\n
+          "              Useful Life"\n\n
+Or\n\n
+(Cost of Asset – Salvage Value)\n
+------------------------------------------x Rate\n
+        "                     100"\n\n
+The rate of Depreciation =\n\n
+      (Annual Depreciation x 100)\n
+-----------------------------------------\n</string>
+    <string name="_3kuch">Cost of Asset\n\n\n<b>Salvage</b> <b>value</b> is the estimated resale <b>value</b> of an asset at the end of its useful life. It is subtracted from the cost
+        of a fixed asset to determine the amount of the asset cost that will be depreciated. Thus, <b>Salvage</b> <b>value</b> is used as
+        a component of the depreciation calculation\n\n
+
+"Amount Total price of asset""             ""100"\n
+"Salvage value Resale Value""               ""20\n"
+"Depreciation  rate  % Value ""               ""15\n"
+"Time In             years""                            ""2\n"
+"Depreciation        Amount""                  ""24\n"
+"Asset Value               ""                           ""76\n"
+        \n\n
+<u>Calculate Now</u></string>
+    <string name="npv1"><u>NPV and IRR</u></string>
+    <string name="npv2">NPV is <b>calculated</b> by taking the difference between the present value of cash inflows and present value of cash outflows over a period of time. As the name suggests, <b>net present value</b> is nothing but net off of the present value of cash inflows and outflows by discounting the flows at a specified rate.\n\n\n1  <b>IRR</b>  is the rate of growth a project is expected to generate.\n2.	<b>IRR</b> is calculated by the condition that the discount rate is set such that the NPV = 0 for a project.\n3.	<b>IRR</b>  is used in capital budgeting to decide which projects or investments to undertake and which to forgo
+</string>
+</resources>

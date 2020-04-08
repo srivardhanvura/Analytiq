@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtInterest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Interest"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtInterest"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/simpleActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtInterest"
+            android:layout_marginLeft="15dp"
+            android:text="Simple interest"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/compoundActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtInterest"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/simpleActivity"
+            android:text="Compound interest"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txtMensuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/simpleActivity"
+            android:layout_margin="10dp"
+            android:text="Mensuration"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/simpleActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtMensuration"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/mensurationActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtMensuration"
+            android:layout_marginLeft="15dp"
+            android:text="Mensuration"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txtCashFlow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mensurationActivity"
+            android:layout_margin="10dp"
+            android:text="Cash Flow"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/mensurationActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtCashFlow"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/cashflowActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtCashFlow"
+            android:layout_marginLeft="15dp"
+            android:text="Cash Flow"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txtDepreciation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cashflowActivity"
+            android:layout_margin="10dp"
+            android:text="Depreciation"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/cashflowActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtDepreciation"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/depreciationWrittenActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDepreciation"
+            android:layout_marginLeft="15dp"
+            android:text="Written down Method"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/depreciationStraightActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDepreciation"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/depreciationWrittenActivity"
+            android:text="Straight Line Method"
+            android:textAllCaps="false" />
+
+
+        <TextView
+            android:id="@+id/txtnpvirr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/depreciationWrittenActivity"
+            android:layout_margin="10dp"
+            android:text="NPV IRR"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/depreciationWrittenActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtnpvirr"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/npvIrrActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtnpvirr"
+            android:layout_marginLeft="15dp"
+            android:text="NPV and IRR"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txtNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/npvIrrActivity"
+            android:layout_margin="10dp"
+            android:text="Normal Distribution"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/npvIrrActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtNormal"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/normalWithoutActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNormal"
+            android:layout_marginLeft="15dp"
+            android:text="Mean=0 SD=1"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/normalWithActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNormal"
+            android:layout_toRightOf="@+id/normalWithoutActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Variable mean and sd"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/dep_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/normalWithoutActivity"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Depreciation text 1" />
+
+        <Button
+            android:id="@+id/dep_text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dep_text_1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Depreciation text 2" />
+
+        <Button
+            android:id="@+id/npv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dep_text_2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:text="NPV text" />
+
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/npv_text"
+            android:text="Logout"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+</ScrollView>
