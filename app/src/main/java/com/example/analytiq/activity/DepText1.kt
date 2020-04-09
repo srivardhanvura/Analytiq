@@ -1,10 +1,12 @@
 package com.example.analytiq.activity
 
 import android.content.Intent
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ScrollView
+import android.widget.TextView
 import com.example.analytiq.R
 
 class DepText1 : AppCompatActivity() {
@@ -15,7 +17,6 @@ class DepText1 : AppCompatActivity() {
 
         findViewById<ScrollView>(R.id.dep_text1_scroll).isHorizontalScrollBarEnabled=false
         findViewById<ScrollView>(R.id.dep_text1_scroll).isVerticalScrollBarEnabled=false
-
 
         findViewById<Button>(R.id.btn).setOnClickListener {
             val intent= Intent(this@DepText1,DepreciationStraightLine::class.java)

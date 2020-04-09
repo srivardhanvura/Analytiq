@@ -105,5 +105,35 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, CorrelationActivity::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.varActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, VarActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.discountingActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, DiscountingFactor::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.zerogrowthActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, ZeroGrowthActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.constantgrowthActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, ConstantGrowthActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.dividedbasedthActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, DividedBasedActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

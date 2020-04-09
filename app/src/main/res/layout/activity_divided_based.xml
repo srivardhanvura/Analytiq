@@ -1,19 +1,12 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/r"
     android:orientation="vertical"
-    android:padding="15dp"
-    android:scrollbars="none"
-    android:id="@+id/simple_scroll"
-    tools:context=".activity.SimpleInterest">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    android:padding="18dp"
+    tools:context=".activity.DividedBasedActivity">
 
 
     <TextView
@@ -21,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="2dp"
-        android:text="Simple Interest"
+        android:text="Divided Based Model"
         android:textColor="#051573"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -32,97 +25,81 @@
         android:id="@+id/Princ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/PA_bar"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="39dp"
-        android:text="Principal Amount"
+        android:layout_marginTop="20dp"
+        android:text="Dividend"
         android:textSize="20sp" />
 
 
     <EditText
-        android:id="@+id/Princc"
+        android:id="@+id/fst"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Principal Amount"
-        android:inputType="number"
-        android:textSize="20sp" />
+        android:hint="Amount"
+        android:inputType="numberDecimal"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/Interest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/IR_bar"
-        android:layout_alignLeft="@+id/IR_bar"
-        android:layout_marginLeft="0dp"
         android:layout_marginTop="20dp"
-        android:text="Interest Rate(%)"
+        android:text="Price of Share"
         android:textSize="20sp" />
 
-
     <EditText
-        android:id="@+id/Interestt"
+        android:id="@+id/scnd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Interest per Year"
+        android:hint="Amount"
         android:inputType="number"
-        android:textSize="20sp" />
-
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/Yrs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginTop="20dp"
-        android:text="Year(s)"
-        android:textSize="20sp" />
-
-
-    <EditText
-        android:id="@+id/Yrss"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="How Many Years"
-        android:inputType="number"
-        android:textSize="20sp" />
-
-
-    <TextView
-        android:id="@+id/simple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
-        android:text="Simple Interest"
+        android:text="Cost of Equity(%)"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/simplee"
+        android:id="@+id/thrd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Simple Interest"
+        android:ems="10"
+        android:hint=""
+        android:inputType="number"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Current Price of Share"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/frth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
         android:enabled="false"
         android:textColor="@android:color/black"
-        android:inputType="number"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
+
 
     <Button
         android:id="@+id/calculate"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_rounded"
         android:text="Calculate"
         android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textColor="#fff" />
 
-    </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

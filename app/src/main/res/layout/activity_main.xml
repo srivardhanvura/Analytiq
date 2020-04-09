@@ -247,11 +247,92 @@
             android:text="Correlation"
             android:textAllCaps="false" />
 
+        <TextView
+            android:id="@+id/txtVar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/corrActivity"
+            android:layout_margin="10dp"
+            android:text="Var"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/corrActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtVar"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/varActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtVar"
+            android:layout_marginLeft="15dp"
+            android:text="Var"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txtDiscounting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/varActivity"
+            android:layout_margin="10dp"
+            android:text="Discounting"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/varActivity"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/txtDiscounting"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/discountingActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDiscounting"
+            android:layout_marginLeft="15dp"
+            android:text="Discounting Factor"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/zerogrowthActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/discountingActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Zero Growth"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/dividedbasedthActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/discountingActivity"
+            android:layout_toRightOf="@id/zerogrowthActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Divided Based"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/constantgrowthActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/discountingActivity"
+            android:layout_toRightOf="@id/dividedbasedthActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Constant Growth"
+            android:textAllCaps="false" />
+
         <Button
             android:id="@+id/dep_text_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/corrActivity"
+            android:layout_below="@id/zerogrowthActivity"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:text="Depreciation text 1" />

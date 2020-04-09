@@ -5,26 +5,27 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ScrollView
+import android.widget.Toast
 import com.example.analytiq.R
 
 
 class SimpleInterest : AppCompatActivity() {
 
-//    lateinit var PA:TextView
+    //    lateinit var PA:TextView
 //    lateinit var Interest_Rate:TextView
 //    lateinit var Years:TextView
-    lateinit var PA_bar:EditText
-    lateinit var IR_bar:EditText
-    lateinit var year_bar:EditText
-    lateinit var simplee:EditText
-    lateinit var calculate:Button
+    lateinit var PA_bar: EditText
+    lateinit var IR_bar: EditText
+    lateinit var year_bar: EditText
+    lateinit var simplee: EditText
+    lateinit var calculate: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_interest)
 
-        findViewById<ScrollView>(R.id.simple_scroll).isHorizontalScrollBarEnabled=false
-        findViewById<ScrollView>(R.id.simple_scroll).isVerticalScrollBarEnabled=false
+        findViewById<ScrollView>(R.id.simple_scroll).isHorizontalScrollBarEnabled = false
+        findViewById<ScrollView>(R.id.simple_scroll).isVerticalScrollBarEnabled = false
 
 //        PA = findViewById(R.id.Princ)
 //        Interest_Rate = findViewById(R.id.Interest)
@@ -37,11 +38,16 @@ class SimpleInterest : AppCompatActivity() {
 
         calculate.setOnClickListener {
 
+            if (PA_bar.text.isEmpty() || IR_bar.text.isEmpty()  || year_bar.text.isEmpty()) {
+                Toast.makeText(this, "Please fill properly", Toast.LENGTH_SHORT).show()
+            } else {
+
                 val num1 = Integer.parseInt(PA_bar.text.toString())
                 val num2 = Integer.parseInt(IR_bar.text.toString())
                 val num = Integer.parseInt(year_bar.text.toString())
                 val si = num1 * num2 * num / 100
                 simplee.setText(Integer.toString(si))
+            }
         }
     }
 }

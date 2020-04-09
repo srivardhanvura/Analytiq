@@ -30,8 +30,8 @@ class CompoundInterest : AppCompatActivity(), AdapterView.OnItemSelectedListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compound_interest)
 
-        findViewById<ScrollView>(R.id.compound_scroll_view).isHorizontalScrollBarEnabled=false
-        findViewById<ScrollView>(R.id.compound_scroll_view).isVerticalScrollBarEnabled=false
+        findViewById<ScrollView>(R.id.compound_scroll_view).isHorizontalScrollBarEnabled = false
+        findViewById<ScrollView>(R.id.compound_scroll_view).isVerticalScrollBarEnabled = false
 
         finalAmount = findViewById(R.id.a)
         initialPrinciple = findViewById(R.id.p)
@@ -108,6 +108,21 @@ class CompoundInterest : AppCompatActivity(), AdapterView.OnItemSelectedListener
     }
 
     fun calculate(view: View) {
+        var c=0
+
+        if(finalAmount.text.isEmpty())
+            c++
+        if(initialPrinciple.text.isEmpty())
+            c++
+        if(totalTime.text.isEmpty())
+            c++
+        if(interestRate.text.isEmpty())
+            c++
+        if(c>3){
+            Toast.makeText(this, "Please fill properly", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if (n != null) {
             if (compoundFreq == "Custom" && TextUtils.isEmpty(customCompoundFrequency.text)) {
                 Toast.makeText(this, "Please fill compounding frequency", Toast.LENGTH_SHORT).show()
@@ -118,103 +133,104 @@ class CompoundInterest : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 Toast.makeText(this, "Please fill valid Compound frequency", Toast.LENGTH_SHORT)
                     .show()
             } else if (TextUtils.isEmpty(finalAmount.text) || TextUtils.isEmpty(initialPrinciple.text) || TextUtils.isEmpty(
-                    interestRate.text
-                ) || TextUtils.isEmpty(totalTime.text)
-            ) {
+                interestRate.text
+            ) || TextUtils.isEmpty(totalTime.text)
+        ) {
 
-                if (!TextUtils.isEmpty(customCompoundFrequency.text)) {
-                    n = java.lang.Double.parseDouble(customCompoundFrequency.text.toString())
-                }
-                if (!TextUtils.isEmpty(finalAmount.text)) {
-                    a = java.lang.Double.parseDouble(finalAmount.text.toString())
-                }
-                if (!TextUtils.isEmpty(initialPrinciple.text)) {
-                    p = java.lang.Double.parseDouble(initialPrinciple.text.toString())
-                }
-                if (!TextUtils.isEmpty(interestRate.text)) {
-                    r = java.lang.Double.parseDouble(interestRate.text.toString())
-                }
-                if (!TextUtils.isEmpty(totalTime.text)) {
-                    t = java.lang.Double.parseDouble(totalTime.text.toString())
-                }
+            if (!TextUtils.isEmpty(customCompoundFrequency.text)) {
+                n = java.lang.Double.parseDouble(customCompoundFrequency.text.toString())
+            }
+            if (!TextUtils.isEmpty(finalAmount.text)) {
+                a = java.lang.Double.parseDouble(finalAmount.text.toString())
+            }
+            if (!TextUtils.isEmpty(initialPrinciple.text)) {
+                p = java.lang.Double.parseDouble(initialPrinciple.text.toString())
+            }
+            if (!TextUtils.isEmpty(interestRate.text)) {
+                r = java.lang.Double.parseDouble(interestRate.text.toString())
+            }
+            if (!TextUtils.isEmpty(totalTime.text)) {
+                t = java.lang.Double.parseDouble(totalTime.text.toString())
+            }
 
 
-                if (TextUtils.isEmpty(finalAmount.text)) {
-                    a = calcFinalAmount(p, r, n, t)
-                    finalAmount.setText(a.toString())
-                }
-                if (TextUtils.isEmpty(initialPrinciple.text)) {
-                    p = calcInitialPrinciple(a, r, n, t)
-                    initialPrinciple.setText(p.toString())
-                }
-                if (TextUtils.isEmpty(interestRate.text)) {
-                    r = calcInterestRate(a, p, n, t)
-                    interestRate.setText(r.toString())
-                }
-                if (TextUtils.isEmpty(totalTime.text)) {
-                    t = calcTimePeriod(a, p, r, n)
-                    totalTime.setText(t.toString())
-                }
+            if (TextUtils.isEmpty(finalAmount.text)) {
+                a = calcFinalAmount(p, r, n, t)
+                finalAmount.setText(a.toString())
+            }
+            if (TextUtils.isEmpty(initialPrinciple.text)) {
+                p = calcInitialPrinciple(a, r, n, t)
+                initialPrinciple.setText(p.toString())
+            }
+            if (TextUtils.isEmpty(interestRate.text)) {
+                r = calcInterestRate(a, p, n, t)
+                interestRate.setText(r.toString())
+            }
+            if (TextUtils.isEmpty(totalTime.text)) {
+                t = calcTimePeriod(a, p, r, n)
+                totalTime.setText(t.toString())
+            }
 
 //            compoundInterest.text = "Compound Interest =" + calcCompoundInterest(a, p).toString()
 
-            } else {
-                Toast.makeText(
-                    this,
-                    "Fill Properly or all the fields are filled, clear a field",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }else{
+        } else {
             Toast.makeText(
-                this@CompoundInterest,
-                "Please select compound frequency",
-                Toast.LENGTH_LONG
+                this,
+                "Fill Properly or all the fields are filled, clear a field",
+                Toast.LENGTH_SHORT
             ).show()
         }
+    }else
+    {
+        Toast.makeText(
+            this@CompoundInterest,
+            "Please select compound frequency",
+            Toast.LENGTH_LONG
+        ).show()
     }
+}
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        compoundFreq = parent?.getItemAtPosition(position).toString()
+override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    compoundFreq = parent?.getItemAtPosition(position).toString()
 
 //        finalAmount.setText("")
 //        totalTime.setText("")
 //        interestRate.setText("")
 //        initialPrinciple.setText("")
 
-        if (compoundFreq == "Annually") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-            n = 1.0
-        } else if (compoundFreq == "Semiannually") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-            n = 2.0
-        } else if (compoundFreq == "Quarterly") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-            n = 4.0
-        } else if (compoundFreq == "Monthly") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-            n = 12.0
-        } else if (compoundFreq == "Daily") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-            n = 365.0
-        } else if (compoundFreq == "Continuous") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-            n = 0.0
-        } else if (compoundFreq == "Compound Frequency") {
-            customCompoundFrequency.visibility = View.GONE
-            customCompoundFrequency.text.clear()
-        } else {
-            customCompoundFrequency.visibility = View.VISIBLE
-        }
+    if (compoundFreq == "Annually") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+        n = 1.0
+    } else if (compoundFreq == "Semiannually") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+        n = 2.0
+    } else if (compoundFreq == "Quarterly") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+        n = 4.0
+    } else if (compoundFreq == "Monthly") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+        n = 12.0
+    } else if (compoundFreq == "Daily") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+        n = 365.0
+    } else if (compoundFreq == "Continuous") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+        n = 0.0
+    } else if (compoundFreq == "Compound Frequency") {
+        customCompoundFrequency.visibility = View.GONE
+        customCompoundFrequency.text.clear()
+    } else {
+        customCompoundFrequency.visibility = View.VISIBLE
     }
+}
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
+override fun onNothingSelected(parent: AdapterView<*>?) {
 
-    }
+}
 }

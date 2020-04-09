@@ -1,18 +1,14 @@
 package com.example.analytiq.activity
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.TextUtils
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import com.example.analytiq.R
-import kotlinx.android.synthetic.main.npv_irr_rows.view.*
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.FormulaEvaluator
@@ -20,7 +16,6 @@ import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.io.InputStream
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 
@@ -49,10 +44,11 @@ class CorrelationActivity : AppCompatActivity() {
         resTable = findViewById(R.id.resTable)
         resTableHead = findViewById(R.id.corr_table2_heading)
 
+
         findViewById<TextView>(R.id.txtxx).setText("X-X̄")
-        findViewById<TextView>(R.id.txtyy).setText("X-Ȳ")
-        findViewById<TextView>(R.id.txtxx2).setText("∑ " + Html.fromHtml("X-X̄ <sup>2</sup>"))
-        findViewById<TextView>(R.id.txtyy).setText("∑ " + Html.fromHtml("Y-Ȳ <sup>2</sup>"))
+        findViewById<TextView>(R.id.txtyy).setText("Y-Ȳ")
+        findViewById<TextView>(R.id.txtxx2).setText("∑ " + "(X-X̄)2")
+        findViewById<TextView>(R.id.txtyy2).setText("∑ " +"(Y-Ȳ)2")
         findViewById<TextView>(R.id.txtxy).setText("∑ (X-X̄)(Y-Ȳ)")
 
 
@@ -87,13 +83,13 @@ class CorrelationActivity : AppCompatActivity() {
                 if (!TextUtils.isEmpty(xValue.text)) {
                     sumX += xValue.text.toString().toDouble()
                     countX++
-                } else if (!TextUtils.isEmpty(xValue.text) && TextUtils.isEmpty(yValue.text)) {
+                } else if (!xValue.text.isEmpty() && yValue.text.isEmpty()) {
                     flag = 1
                 }
                 if (!TextUtils.isEmpty(yValue.text)) {
                     sumY += yValue.text.toString().toDouble()
                     countY++
-                } else if (!TextUtils.isEmpty(yValue.text) && TextUtils.isEmpty(xValue.text)) {
+                } else if (!yValue.text.isEmpty() && xValue.text.isEmpty()) {
                     flag = 1
                 }
             }
@@ -203,8 +199,8 @@ class CorrelationActivity : AppCompatActivity() {
                                             this@CorrelationActivity,
                                             "Number of columns is greater than 2",
                                             Toast.LENGTH_SHORT
-                                        )
-                                        break
+                                        ).show()
+                                        return
                                     }
                                 }
                                 table.removeAllViews()

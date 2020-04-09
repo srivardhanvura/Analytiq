@@ -3,10 +3,7 @@ package com.example.analytiq.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ScrollView
-import android.widget.TextView
+import android.widget.*
 import com.example.analytiq.R
 
 
@@ -16,8 +13,8 @@ class DepreciationWrittenDown : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_depreciation_written_down)
 
-        findViewById<ScrollView>(R.id.written_scroll_view).isHorizontalScrollBarEnabled=false
-        findViewById<ScrollView>(R.id.written_scroll_view).isVerticalScrollBarEnabled=false
+        findViewById<ScrollView>(R.id.written_scroll_view).isHorizontalScrollBarEnabled = false
+        findViewById<ScrollView>(R.id.written_scroll_view).isVerticalScrollBarEnabled = false
 
         val a = findViewById<EditText>(R.id.editText)
         val b = findViewById<EditText>(R.id.editText2)
@@ -28,6 +25,12 @@ class DepreciationWrittenDown : AppCompatActivity() {
 
         val submit = findViewById<Button>(R.id.button)
         submit.setOnClickListener {
+            if (a.text.isEmpty() || b.text.isEmpty() || c.text.isEmpty() || d.text.isEmpty()) {
+                Toast.makeText(this@DepreciationWrittenDown, "Fill properly", Toast.LENGTH_SHORT)
+                    .show()
+
+            } else {
+
                 val s1 = a.getText().toString()
                 val s2 = b.getText().toString()
                 val s3 = c.getText().toString()
@@ -53,8 +56,9 @@ class DepreciationWrittenDown : AppCompatActivity() {
                 dm.setText(U.toString())
                 av.setText(total_amount.toString())
 
-                dm.visibility=View.VISIBLE
-                av.visibility=View.VISIBLE
+                dm.visibility = View.VISIBLE
+                av.visibility = View.VISIBLE
+            }
         }
     }
 }

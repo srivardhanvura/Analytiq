@@ -96,7 +96,7 @@
             android:textSize="18sp"
             android:textColor="#000000"
             android:hint="Enter z"
-            android:inputType="textPersonName" />
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/textView7"
@@ -156,6 +156,16 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#777777"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/restxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 
