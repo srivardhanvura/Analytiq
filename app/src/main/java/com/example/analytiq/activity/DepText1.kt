@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.webkit.WebView
 import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
@@ -27,5 +28,11 @@ class DepText1 : AppCompatActivity() {
             val intent= Intent(this@DepText1,DepreciationWrittenDown::class.java)
             startActivity(intent)
         }
+
+//        val view=findViewById<WebView>(R.id.text1)
+//        var text="<html><body><p align=\"justify\">"
+//        text+=R.string.aurkuch
+//        text+="</p></body></html>"
+//        view.loadData(text,"text/html","utf-8")
     }
 }

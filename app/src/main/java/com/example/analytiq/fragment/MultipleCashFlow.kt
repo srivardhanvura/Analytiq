@@ -1,9 +1,12 @@
 package com.example.analytiq.fragment
 
 
+import android.Manifest
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +15,8 @@ import android.view.ViewGroup
 import com.example.analytiq.R
 import android.text.TextUtils
 import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.FormulaEvaluator
@@ -28,6 +33,7 @@ class MultipleCashFlow : Fragment() {
 
     lateinit var tableLayout: TableLayout
     lateinit var totalPresentValueTV: TextView
+    val STORAGE_PERMISSION = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,9 +58,17 @@ class MultipleCashFlow : Fragment() {
 
         }
         view.findViewById<Button>(R.id.importBtn).setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.setType("*/*")
-            startActivityForResult(Intent.createChooser(intent,"Choose a file"),10)
+            if (ContextCompat.checkSelfPermission(
+                    activity as Context,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                askStorgaePermission()
+            } else {
+                val intent = Intent(Intent.ACTION_GET_CONTENT)
+                intent.setType("*/*")
+                startActivityForResult(Intent.createChooser(intent, "Choose a file"), 10)
+            }
         }
 
         addRow.setOnClickListener {
@@ -119,7 +133,7 @@ class MultipleCashFlow : Fragment() {
 
             10 -> {
                 if (resultCode == RESULT_OK) {
-                    val dataUri=data?.data
+                    val dataUri = data?.data
                     val path = data?.data?.path
                     if (path != null) {
                         if (path.endsWith(".xlsx", true)) {
@@ -163,20 +177,18 @@ class MultipleCashFlow : Fragment() {
 
                                     for (j in 0 until 3) {
                                         val value = getCellAsString(row, j, formulaEvaluator)
-                                        val edit=tableRow.getChildAt(j) as EditText
+                                        val edit = tableRow.getChildAt(j) as EditText
                                         edit.setText(value)
                                     }
                                 }
-                            }
-                            catch (e: IOException) {
+                            } catch (e: IOException) {
                                 Toast.makeText(
                                     activity as Context,
                                     "Error reading input stream",
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
-                            }
-                            catch (e: FileNotFoundException) {
+                            } catch (e: FileNotFoundException) {
                                 Toast.makeText(
                                     activity as Context,
                                     "File Not Found",
@@ -203,22 +215,22 @@ class MultipleCashFlow : Fragment() {
         try {
             val cell = row.getCell(c)
             val cellValue = formulaEvaluator.evaluate(cell)
-            if (cellValue!=null){
-            when (cellValue.cellType) {
-                Cell.CELL_TYPE_BOOLEAN -> value = "" + cellValue.booleanValue
-                Cell.CELL_TYPE_NUMERIC -> {
-                    val numericValue = cellValue.numberValue
-                    if (HSSFDateUtil.isCellDateFormatted(cell)) {
-                        val date = cellValue.numberValue
-                        val formatter = SimpleDateFormat("MM/dd/yy")
-                        value = formatter.format(HSSFDateUtil.getJavaDate(date))
-                    } else {
-                        value = "" + numericValue
+            if (cellValue != null) {
+                when (cellValue.cellType) {
+                    Cell.CELL_TYPE_BOOLEAN -> value = "" + cellValue.booleanValue
+                    Cell.CELL_TYPE_NUMERIC -> {
+                        val numericValue = cellValue.numberValue
+                        if (HSSFDateUtil.isCellDateFormatted(cell)) {
+                            val date = cellValue.numberValue
+                            val formatter = SimpleDateFormat("MM/dd/yy")
+                            value = formatter.format(HSSFDateUtil.getJavaDate(date))
+                        } else {
+                            value = "" + numericValue
+                        }
                     }
+                    Cell.CELL_TYPE_STRING -> value = "" + cellValue.stringValue
                 }
-                Cell.CELL_TYPE_STRING -> value = "" + cellValue.stringValue
-            }
-            }else{
+            } else {
                 return ""
             }
         } catch (e: NullPointerException) {
@@ -230,5 +242,41 @@ class MultipleCashFlow : Fragment() {
         }
 
         return value
+    }
+
+    fun askStorgaePermission() {
+        val permi = Array<String>(1, { i -> "" })
+        permi[0] = android.Manifest.permission.READ_EXTERNAL_STORAGE
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this.requireActivity(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            val alert = AlertDialog.Builder(activity as Context)
+            alert.setTitle("Storage permission required")
+            alert.setMessage("Storage permission required to import excel files")
+            alert.setPositiveButton("Ok") { text, listener ->
+                ActivityCompat.requestPermissions(this.requireActivity(), permi, STORAGE_PERMISSION)
+            }
+            alert.setNegativeButton("Cancel") { text, listener -> }
+            alert.create()
+            alert.show()
+        } else {
+            ActivityCompat.requestPermissions(this.requireActivity(), permi, STORAGE_PERMISSION)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == STORAGE_PERMISSION) {
+            if (!(grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                Toast.makeText(activity as Context, "Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

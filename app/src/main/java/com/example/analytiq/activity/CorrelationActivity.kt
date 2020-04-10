@@ -1,14 +1,18 @@
 package com.example.analytiq.activity
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
 import android.text.TextUtils
 import android.view.View
 import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.analytiq.R
+import com.jjoe64.graphview.GraphView
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.FormulaEvaluator
@@ -18,6 +22,14 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
+import com.jjoe64.graphview.series.PointsGraphSeries
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
+import org.apache.poi.ss.usermodel.Color
+import java.util.*
+import java.util.jar.Manifest
+import kotlin.collections.ArrayList
+
 
 class CorrelationActivity : AppCompatActivity() {
 
@@ -28,6 +40,8 @@ class CorrelationActivity : AppCompatActivity() {
     lateinit var table: TableLayout
     lateinit var resTable: TableLayout
     lateinit var resTableHead: TableRow
+    lateinit var graph: GraphView
+    val STORAGE_PERMISSION=1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +57,8 @@ class CorrelationActivity : AppCompatActivity() {
         table = findViewById(R.id.corr_table)
         resTable = findViewById(R.id.resTable)
         resTableHead = findViewById(R.id.corr_table2_heading)
-
-
-        findViewById<TextView>(R.id.txtxx).setText("X-X̄")
-        findViewById<TextView>(R.id.txtyy).setText("Y-Ȳ")
-        findViewById<TextView>(R.id.txtxx2).setText("∑ " + "(X-X̄)2")
-        findViewById<TextView>(R.id.txtyy2).setText("∑ " +"(Y-Ȳ)2")
-        findViewById<TextView>(R.id.txtxy).setText("∑ (X-X̄)(Y-Ȳ)")
-
+        graph = findViewById(R.id.corr_graph)
+        var point_series: PointsGraphSeries<DataPoint>
 
         for (i in 0..3) {
             val row = layoutInflater.inflate(R.layout.correlation_rows, null) as TableRow
@@ -63,6 +71,14 @@ class CorrelationActivity : AppCompatActivity() {
         }
 
         calculate.setOnClickListener {
+
+            graph.removeAllSeries()
+            graph.viewport.setScrollable(true)
+            graph.viewport.setScrollableY(true)
+            graph.viewport.isScalable = true
+            graph.visibility = View.VISIBLE
+            val listX = ArrayList<Double>()
+            val listY = ArrayList<Double>()
 
             resTable.removeAllViews()
             var sumX = 0.0
@@ -92,7 +108,53 @@ class CorrelationActivity : AppCompatActivity() {
                 } else if (!yValue.text.isEmpty() && xValue.text.isEmpty()) {
                     flag = 1
                 }
+                if (!TextUtils.isEmpty(xValue.text) && !TextUtils.isEmpty(yValue.text)) {
+                    listX.add(xValue.text.toString().toDouble())
+                    listY.add(yValue.text.toString().toDouble())
+                }
             }
+            for (i in 0 until listX.size - 1) {
+                for (j in i until listX.size) {
+                    if (listX[i] > listX[j]) {
+                        var temp = listX[i]
+                        listX[i] = listX[j]
+                        listX[j] = temp
+
+                        temp = listY[i]
+                        listY[i] = listY[j]
+                        listY[j] = temp
+                    }
+                }
+            }
+
+            graph.viewport.isXAxisBoundsManual = true
+            graph.viewport.setMinX(listX[0])
+            graph.viewport.setMaxX(listX[listX.size - 1])
+            graph.viewport.isYAxisBoundsManual = true
+            graph.viewport.setMinY(Collections.min(listY))
+            graph.viewport.setMaxY(Collections.max(listY))
+
+
+            val dataPoint = Array<DataPoint>(listX.size, { i -> DataPoint(0.0, 0.0) })
+            for (k in 0 until listX.size) {
+                dataPoint[k] = DataPoint(listX[k], listY[k])
+            }
+
+            point_series = PointsGraphSeries(dataPoint)
+            graph.addSeries(point_series)
+            point_series.setSize(18.0f)
+            point_series.setColor(android.graphics.Color.RED)
+            //                arrayOf<DataPoint>(
+//                    DataPoint(0.0, 2000.0),
+//                    DataPoint(1.0, 2500.0),
+//                    DataPoint(2.0, 2700.0),
+//                    DataPoint(3.0, 3000.0),
+//                    DataPoint(4.0, 3500.0),
+//                    DataPoint(5.0, 2800.0),
+//                    DataPoint(6.0, 3700.0),
+//                    DataPoint(7.0, 3800.0),
+//                    DataPoint(8.0, 3500.0)
+//                )
 
             if (flag == 1) {
                 Toast.makeText(this@CorrelationActivity, "Fill properly", Toast.LENGTH_SHORT)
@@ -166,9 +228,18 @@ class CorrelationActivity : AppCompatActivity() {
 
         import.setOnClickListener {
 
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.setType("*/*")
-            startActivityForResult(intent, 15)
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                askStoragePermission()
+            } else {
+
+                val intent = Intent(Intent.ACTION_GET_CONTENT)
+                intent.setType("*/*")
+                startActivityForResult(intent, 15)
+            }
         }
     }
 
@@ -212,12 +283,12 @@ class CorrelationActivity : AppCompatActivity() {
                                     ) as TableRow
                                     table.addView(view)
 
-                                    val row=sheet.getRow(i)
-                                    val count=row.physicalNumberOfCells
+                                    val row = sheet.getRow(i)
+                                    val count = row.physicalNumberOfCells
 
-                                    for(j in 0 until count){
-                                        val value=getCellAsString(row,j,formulaEvaluator)
-                                        val edit=view.getChildAt(j) as EditText
+                                    for (j in 0 until count) {
+                                        val value = getCellAsString(row, j, formulaEvaluator)
+                                        val edit = view.getChildAt(j) as EditText
                                         edit.setText(value)
                                     }
 
@@ -263,7 +334,7 @@ class CorrelationActivity : AppCompatActivity() {
         try {
             val cell = row.getCell(c)
             val cellValue = formulaEvaluator.evaluate(cell)
-            if (cellValue!=null){
+            if (cellValue != null) {
                 when (cellValue.cellType) {
                     Cell.CELL_TYPE_BOOLEAN -> value = "" + cellValue.booleanValue
                     Cell.CELL_TYPE_NUMERIC -> {
@@ -278,7 +349,7 @@ class CorrelationActivity : AppCompatActivity() {
                     }
                     Cell.CELL_TYPE_STRING -> value = "" + cellValue.stringValue
                 }
-            }else{
+            } else {
                 return ""
             }
         } catch (e: NullPointerException) {
@@ -290,5 +361,37 @@ class CorrelationActivity : AppCompatActivity() {
         }
 
         return value
+    }
+    fun askStoragePermission(){
+
+        val permi=Array<String>(1,{i->""})
+        permi[0]=android.Manifest.permission.READ_EXTERNAL_STORAGE
+
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+            val alert=AlertDialog.Builder(this)
+            alert.setTitle("Storage permission required")
+            alert.setMessage("Storage permission required to import excel files")
+            alert.setPositiveButton("Ok") { text, listener ->
+                ActivityCompat.requestPermissions(this@CorrelationActivity, permi, STORAGE_PERMISSION)
+            }
+            alert.setNegativeButton("Cancel") { text, listener -> }
+            alert.create()
+            alert.show()
+        }else{
+            ActivityCompat.requestPermissions(this,permi,STORAGE_PERMISSION)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode==STORAGE_PERMISSION){
+            if(!(grantResults.size>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)){
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

@@ -2,8 +2,10 @@ package com.example.analytiq.fragment
 
 
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +16,8 @@ import com.example.analytiq.R
 import android.widget.Toast
 import android.text.TextUtils
 import android.widget.EditText
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.FormulaEvaluator
@@ -23,6 +27,7 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
+import java.util.jar.Manifest
 
 
 class NonPlainVanillaBond : Fragment() {
@@ -30,6 +35,7 @@ class NonPlainVanillaBond : Fragment() {
     lateinit var ytm: EditText
     lateinit var spv: EditText
     lateinit var tableLayout: TableLayout
+    val STORAGE_PERMISSION=1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -128,9 +134,17 @@ class NonPlainVanillaBond : Fragment() {
         }
 
         importBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.setType("*/*")
-            startActivityForResult(intent, 20)
+            if (ContextCompat.checkSelfPermission(
+                    activity as Context,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                askStorgaePermission()
+            } else {
+                val intent = Intent(Intent.ACTION_GET_CONTENT)
+                intent.setType("*/*")
+                startActivityForResult(intent, 20)
+            }
         }
 
         return view
@@ -298,5 +312,36 @@ class NonPlainVanillaBond : Fragment() {
         }
 
         return value
+    }
+    fun askStorgaePermission(){
+        val permi=Array<String>(1,{i->""})
+        permi[0]=android.Manifest.permission.READ_EXTERNAL_STORAGE
+
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this.requireActivity(),android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+            val alert=AlertDialog.Builder(activity as Context)
+            alert.setTitle("Storage permission required")
+            alert.setMessage("Storage permission required to import excel files")
+            alert.setPositiveButton("Ok") { text, listener ->
+                ActivityCompat.requestPermissions(this.requireActivity(), permi, STORAGE_PERMISSION)
+            }
+            alert.setNegativeButton("Cancel") { text, listener -> }
+            alert.create()
+            alert.show()
+        }else{
+            ActivityCompat.requestPermissions(this.requireActivity(),permi,STORAGE_PERMISSION)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode==STORAGE_PERMISSION){
+            if(!(grantResults.size>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)){
+                Toast.makeText(activity as Context,"Permission Denied",Toast.LENGTH_SHORT).show()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

@@ -1,12 +1,18 @@
 package com.example.analytiq.activity
 
+import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.analytiq.R
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
 import org.apache.poi.ss.usermodel.Cell
@@ -21,6 +27,7 @@ import java.text.SimpleDateFormat
 class DiscountingFactor : AppCompatActivity() {
 
     lateinit var tableLayout: TableLayout
+    val STORAGE_PERMISSION = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,9 +86,17 @@ class DiscountingFactor : AppCompatActivity() {
     }
 
     fun importbtn(view: View) {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.setType("*/*")
-        startActivityForResult(intent, 25)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            askStoragePermission()
+        } else {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.setType("*/*")
+            startActivityForResult(intent, 25)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -198,5 +213,38 @@ class DiscountingFactor : AppCompatActivity() {
         }
 
         return value
+    }
+
+    fun askStoragePermission(){
+
+        val permi=Array<String>(1,{i->""})
+        permi[0]=Manifest.permission.READ_EXTERNAL_STORAGE
+
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
+            val alert=AlertDialog.Builder(this)
+            alert.setTitle("Storage permission required")
+            alert.setMessage("Storage permission required to import excel files")
+            alert.setPositiveButton("Ok") { text, listener ->
+                ActivityCompat.requestPermissions(this@DiscountingFactor, permi, STORAGE_PERMISSION)
+            }
+            alert.setNegativeButton("Cancel") { text, listener -> }
+            alert.create()
+            alert.show()
+        }else{
+            ActivityCompat.requestPermissions(this,permi,STORAGE_PERMISSION)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode==STORAGE_PERMISSION){
+            if(!(grantResults.size>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)){
+                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show()
+                }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

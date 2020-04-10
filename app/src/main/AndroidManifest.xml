@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +13,61 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.YTMActivity"></activity>
-        <activity android:name=".activity.NormalDistriWithMean" />
-        <activity android:name=".activity.NormalDistriActivity" />
+
+        <activity
+            android:name=".activity.IntroActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MeanVarianceSD"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DurationInYears"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ZeroGrowthActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DividedBasedActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConstantGrowthActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.VarActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DiscountingFactor"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CorrelationActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.YTMActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NormalDistriWithMean"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NormalDistriActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.NPVText"
             android:resizeableActivity="false"
@@ -33,17 +84,6 @@
             android:name=".activity.NPVIRRActivity"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.SplashActivity3"
-            android:noHistory="true"
-            android:resizeableActivity="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.SplashActivity2"
-            android:noHistory="true"
-            android:resizeableActivity="false"
-            android:screenOrientation="portrait" />
-        <activity android:name=".activity.ImportActivity" />
         <activity
             android:name=".activity.DepreciationWrittenDown"
             android:resizeableActivity="false"
@@ -86,17 +126,6 @@
             android:name=".activity.Login_Form"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.SplashActivity1"
-            android:noHistory="true"
-            android:resizeableActivity="false"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

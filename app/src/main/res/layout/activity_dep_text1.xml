@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/kuu_min"
         android:orientation="vertical"
 
@@ -31,13 +31,19 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
+<!--        <WebView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/text1"/>-->
+
         <TextView
             android:id="@+id/seacond"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/first"
             android:layout_marginTop="40dp"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
             android:text="@string/aurkuch"
             android:textSize="20sp"
             tools:ignore="RtlCompat" />

@@ -1,17 +1,34 @@
 package com.example.analytiq.activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.analytiq.R
 import com.google.firebase.auth.FirebaseAuth
+import java.security.Permission
 
 class MainActivity : AppCompatActivity() {
+
+    val STORAGE_PERMISSION = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestStoragePermissions()
+        }
 
         val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -135,5 +152,56 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, DividedBasedActivity::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.durationInYearsActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, DurationInYears::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.meanVarianceActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, MeanVarianceSD::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun requestStoragePermissions() {
+        val permi = Array<String>(1,{i->""})
+        permi[0]=Manifest.permission.READ_EXTERNAL_STORAGE
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("Storage permission required")
+            alert.setMessage("Storage permission required to import excel files")
+            alert.setPositiveButton("Ok") { text, listener ->
+                ActivityCompat.requestPermissions(this@MainActivity, permi, STORAGE_PERMISSION)
+            }
+            alert.setNegativeButton("Cancel") { text, listener -> }
+            alert.create()
+            alert.show()
+        } else {
+            ActivityCompat.requestPermissions(this, permi, STORAGE_PERMISSION)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == STORAGE_PERMISSION) {
+            if (!(grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onBackPressed() {
+        moveTaskToBack(true)
     }
 }

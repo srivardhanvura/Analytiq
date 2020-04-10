@@ -327,12 +327,29 @@
             android:layout_marginLeft="15dp"
             android:text="Constant Growth"
             android:textAllCaps="false" />
+        <Button
+            android:id="@+id/durationInYearsActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/constantgrowthActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Duration in Years"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/meanVarianceActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/durationInYearsActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Mean Variance SD"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/dep_text_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/zerogrowthActivity"
+            android:layout_below="@id/meanVarianceActivity"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:text="Depreciation text 1" />

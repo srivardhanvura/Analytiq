@@ -60,7 +60,7 @@
                 android:layout_weight="1.25"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="(X-X)"
+                android:text="(X - X̄)"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -72,7 +72,7 @@
                 android:layout_weight="1.25"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="(X-X)"
+                android:text="(Y - Ȳ)"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -139,7 +139,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="(X-X-)2"
+                android:text="∑(X - X̄)&#178;"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -151,7 +151,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="(Y-Y)2"
+                android:text="∑(Y - Ȳ)&#178;"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -163,7 +163,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="(X-X)(Y-Y)"
+                android:text="∑(X - X̄)(Y - Ȳ)"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -187,11 +187,19 @@
             android:textSize="18sp"
             android:visibility="gone" />
 
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/corr_graph"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/corr_res"
+                android:layout_height="200dp"
+                android:visibility="gone"/>
+
         <Button
             android:id="@+id/calculate"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:layout_below="@id/corr_res"
+            android:layout_below="@id/corr_graph"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="24dp"
