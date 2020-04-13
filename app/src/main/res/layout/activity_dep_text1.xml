@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
+    android:background="@drawable/kuu"
     android:id="@+id/dep_text1_scroll"
     tools:context=".activity.DepText1">
 
@@ -12,7 +13,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/kuu_min"
         android:orientation="vertical"
 
         android:padding="15dp">

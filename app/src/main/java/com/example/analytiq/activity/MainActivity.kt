@@ -164,6 +164,30 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, MeanVarianceSD::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.emiActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, EMICalculation::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.factorialPowerActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, FactorialPower::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.regressionActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, RegressionActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.incomeTaxActivity).setOnClickListener {
+
+            val intent = Intent(this@MainActivity, IncomeTax::class.java)
+            startActivity(intent)
+        }
     }
 
     fun requestStoragePermissions() {

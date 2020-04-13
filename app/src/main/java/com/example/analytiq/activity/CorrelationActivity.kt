@@ -144,17 +144,6 @@ class CorrelationActivity : AppCompatActivity() {
             graph.addSeries(point_series)
             point_series.setSize(18.0f)
             point_series.setColor(android.graphics.Color.RED)
-            //                arrayOf<DataPoint>(
-//                    DataPoint(0.0, 2000.0),
-//                    DataPoint(1.0, 2500.0),
-//                    DataPoint(2.0, 2700.0),
-//                    DataPoint(3.0, 3000.0),
-//                    DataPoint(4.0, 3500.0),
-//                    DataPoint(5.0, 2800.0),
-//                    DataPoint(6.0, 3700.0),
-//                    DataPoint(7.0, 3800.0),
-//                    DataPoint(8.0, 3500.0)
-//                )
 
             if (flag == 1) {
                 Toast.makeText(this@CorrelationActivity, "Fill properly", Toast.LENGTH_SHORT)

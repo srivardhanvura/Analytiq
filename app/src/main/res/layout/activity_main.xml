@@ -190,8 +190,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtNormal"
-            android:layout_toRightOf="@+id/normalWithoutActivity"
             android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/normalWithoutActivity"
             android:text="Variable mean and sd"
             android:textAllCaps="false" />
 
@@ -313,8 +313,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/discountingActivity"
-            android:layout_toRightOf="@id/zerogrowthActivity"
             android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/zerogrowthActivity"
             android:text="Divided Based"
             android:textAllCaps="false" />
 
@@ -323,10 +323,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/discountingActivity"
-            android:layout_toRightOf="@id/dividedbasedthActivity"
             android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/dividedbasedthActivity"
             android:text="Constant Growth"
             android:textAllCaps="false" />
+
         <Button
             android:id="@+id/durationInYearsActivity"
             android:layout_width="wrap_content"
@@ -346,10 +347,46 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/dep_text_1"
+            android:id="@+id/factorialPowerActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/meanVarianceActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Factorial Power"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/emiActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/factorialPowerActivity"
+            android:layout_marginLeft="15dp"
+            android:text="EMI"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/regressionActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emiActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Regression"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/incomeTaxActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/regressionActivity"
+            android:layout_marginLeft="15dp"
+            android:text="Income Tax"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/dep_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/incomeTaxActivity"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:text="Depreciation text 1" />

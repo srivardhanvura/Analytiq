@@ -146,7 +146,7 @@
             android:layout_below="@+id/button"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textColor="@android:color/black"/>
 
 

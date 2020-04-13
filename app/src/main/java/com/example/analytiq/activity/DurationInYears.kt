@@ -100,7 +100,7 @@ class DurationInYears : AppCompatActivity() {
                 year.setText(tableLayout.childCount.toString())
                 val cf: Double
                 if (i == Integer.parseInt(yearsToMaturity.text.toString()) - 1) {
-                    cf = fv + fv * c / 100
+                    cf = fv + (fv * c / 100)
                     cashflow.setText((decimalFormat.format(cf)).toString())
                 } else {
                     cf = fv * c / 100
