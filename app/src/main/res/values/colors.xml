@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background">#E1E1E1</color>
     <color name="colorPrimary">#1a237e</color>
     <color name="colorPrimaryDark">#020265</color>
     <color name="colorAccent">#000051</color>
-    <color name="background">#E1E1E1</color>
     <color name="colorPrimary1">#6200EE</color>
     <color name="colorPrimaryDark1">#3700B3</color>
     <color name="colorAccent1">#03DAC5</color>
@@ -11,4 +11,8 @@
     <color name="third">#B0FF9800</color>
     <color name="second">#2196F3</color>
     <color name="first">#D674E6</color>
+
+    <color name="colorPrimary2">#6200EE</color>
+    <color name="colorPrimaryDark2">#3700B3</color>
+    <color name="colorAccent2">#03DAC5</color>
 </resources>

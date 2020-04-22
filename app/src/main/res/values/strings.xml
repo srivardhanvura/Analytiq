@@ -51,6 +51,12 @@ The rate of Depreciation =\n\n
     <string name="k"><b>Analysis will be easy with Analysis and IQ</b></string>
     <string name="l"><b>Leverage your time for extra Return</b></string>
     <string name="m"><b>Tap to move in the Financial</b></string>
+    <string name="duration_in_years">Divided\n
+    Two Stage Mode</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

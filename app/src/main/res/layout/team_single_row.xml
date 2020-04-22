@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="188dp"
+        android:layout_height="189dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shadow"
+        android:src="@drawable/dg" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Deepak Goyal"
+        android:textColor="#070707"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:fontFamily="cursive" />
+
+    <TextView
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="St. Xavier's College\nCEO at RBeI\nFounder of AnalytiQ\nSpecialisation in Finance"
+        android:textColor="#0E0E0E"
+        android:textSize="18sp" />
+
+</LinearLayout>

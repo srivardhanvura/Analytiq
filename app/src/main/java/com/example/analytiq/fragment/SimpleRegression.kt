@@ -187,21 +187,24 @@ class SimpleRegression : Fragment() {
                 view.findViewById<TextView>(R.id.rsquare_text)
                     .setText("Coefficient of determination: \n" + rsquare)
                 view.findViewById<TextView>(R.id.see_text)
-                    .setText("Standard Error of the Estimate- \n" + see)
+                    .setText("Standard Error of the Estimate: \n" + see)
+                view.findViewById<TextView>(R.id.variance_text)
+                    .setText("Correlation: \n" + "%.3f".format(Math.sqrt(1 - (absolonSum / thirdColSum))))
+                view.findViewById<TextView>(R.id.model_text)
+                    .setText("Regression line: y=" + "%.2f".format(b1Cap) + ".x+" + "%.2f".format(b0Cap))
 
-                view.findViewById<TextView>(R.id.rsquare_text).visibility = View.VISIBLE
-                view.findViewById<TextView>(R.id.see_text).visibility = View.VISIBLE
+                view.findViewById<LinearLayout>(R.id.res_simple_regression).visibility=View.VISIBLE
 
-                var i = 0
-                while (i < numberRows) {
-                    val row = tableLayout.getChildAt(i) as TableRow
+                var m = 0
+                while (m < numberRows) {
+                    val row = tableLayout.getChildAt(m) as TableRow
                     val x = row.getChildAt(0) as EditText
                     val y = row.getChildAt(1) as EditText
                     if (x.text.isEmpty() || y.text.isEmpty()) {
-                        tableLayout.removeView(tableLayout.getChildAt(i))
+                        tableLayout.removeView(tableLayout.getChildAt(m))
                         numberRows--
                     } else {
-                        i++
+                        m++
                     }
                 }
                 val xValues = ArrayList<Double>()
@@ -215,19 +218,19 @@ class SimpleRegression : Fragment() {
                 }
 
                 for (i in 0 until numberRows - 1) {
-                    for (j in i until numberRows) {
-                        if (xValues[i] > xValues[j]) {
+                    for (k in i + 1 until numberRows) {
+                        if (xValues[i] > xValues[k]) {
                             var temp = xValues[i]
-                            xValues[i] = xValues[j]
-                            xValues[j] = temp
+                            xValues[i] = xValues[k]
+                            xValues[k] = temp
 
                             temp = yValues[i]
-                            yValues[i] = yValues[j]
-                            yValues[j] = temp
+                            yValues[i] = yValues[k]
+                            yValues[k] = temp
                         }
                     }
                 }
-                val datapoint = Array<DataPoint>(numberRows, { i -> DataPoint(0.0, 0.0) })
+                val datapoint = Array<DataPoint>(numberRows, { l -> DataPoint(0.0, 0.0) })
                 for (i in 0 until numberRows)
                     datapoint[i] = DataPoint(xValues[i], yValues[i])
                 val pointseries = PointsGraphSeries(datapoint)
@@ -242,9 +245,9 @@ class SimpleRegression : Fragment() {
                 graph.viewport.setScrollable(false)
                 graph.viewport.setScrollableY(false)
 //                graph.viewport.isScalable = true
-                graph.viewport.setMinX(Collections.min(xValues))
-                graph.viewport.setMaxX(Collections.max(xValues))
-                graph.viewport.setMinX(Collections.min(yValues))
+                graph.viewport.setMinX(xValues[0])
+                graph.viewport.setMaxX(xValues[xValues.size - 1])
+                graph.viewport.setMinY(Collections.min(yValues))
                 graph.viewport.setMaxY(Collections.max(yValues))
 
                 graph.visibility = View.VISIBLE

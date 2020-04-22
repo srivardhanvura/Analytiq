@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    <TextView-->
+    <!--        android:layout_width="36dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:layout_height="wrap_content"/>-->
+    <EditText
+        android:id="@+id/dv"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:enabled="false"
+        android:inputType="numberDecimal"/>
+    <EditText
+        android:id="@+id/df"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:enabled="false"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/pv"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:enabled="false"
+        android:inputType="numberDecimal"/>
+    <EditText
+        android:id="@+id/ex"
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:enabled="false"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:padding="4dp"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:enabled="false"
+        android:inputType="numberDecimal"/>
+</TableRow>

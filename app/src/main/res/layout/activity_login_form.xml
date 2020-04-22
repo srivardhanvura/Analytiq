@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wall"
     android:orientation="vertical"
     tools:context=".activity.Login_Form">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/wall"
         android:orientation="vertical"
         android:padding="30dp">
 
@@ -56,21 +56,11 @@
             android:textColorHint="@color/colorAccent"
             android:textSize="20sp" />
 
-        <CheckBox
-            android:id="@+id/ccheck"
-            android:layout_width="345dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="5dp"
-            android:onClick="onCheckboxClicked"
-            android:text="Remember me?"
-            android:textColor="#E3E2E2"
-            android:textSize="18sp" />
-
         <Button
             android:id="@+id/bttn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/button_rounded"
             android:text="Log In"
             android:textAllCaps="false"
@@ -87,7 +77,7 @@
                 android:id="@+id/btnn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="30dp"
                 android:layout_weight="3"
                 android:background="@drawable/button_rounded"
                 android:onClick="btn_signupForm"
@@ -100,8 +90,8 @@
                 android:id="@+id/google_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="28dp"
                 android:layout_weight="3" />
 
         </LinearLayout>
@@ -110,14 +100,15 @@
             android:id="@+id/forgotTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="Forgot Password?"
             android:textAlignment="center"
-            android:textColor="#E3E0E0"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
     </LinearLayout>
+
 
     <RelativeLayout
         android:id="@+id/progress_login"
@@ -128,7 +119,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 
 

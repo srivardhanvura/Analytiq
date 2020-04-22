@@ -1,424 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_drawer"
     tools:context=".activity.MainActivity">
 
-    <RelativeLayout
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtInterest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Interest"
-            android:textSize="20sp" />
-
-        <View
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtInterest"
-            android:background="@color/colorPrimary" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/simpleActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtInterest"
-            android:layout_marginLeft="15dp"
-            android:text="Simple interest"
-            android:textAllCaps="false" />
+            <!--                android:background="#0A0B0B"-->
 
-        <Button
-            android:id="@+id/compoundActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtInterest"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/simpleActivity"
-            android:text="Compound interest"
-            android:textAllCaps="false" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
-        <TextView
-            android:id="@+id/txtMensuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/simpleActivity"
-            android:layout_margin="10dp"
-            android:text="Mensuration"
-            android:textSize="20sp" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/simpleActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtMensuration"
-            android:background="@color/colorPrimary" />
+        <FrameLayout
+            android:id="@+id/main_frame_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-        <Button
-            android:id="@+id/mensurationActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtMensuration"
-            android:layout_marginLeft="15dp"
-            android:text="Mensuration"
-            android:textAllCaps="false" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <TextView
-            android:id="@+id/txtCashFlow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mensurationActivity"
-            android:layout_margin="10dp"
-            android:text="Cash Flow"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/mensurationActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtCashFlow"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/cashflowActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtCashFlow"
-            android:layout_marginLeft="15dp"
-            android:text="Cash Flow"
-            android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txtDepreciation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cashflowActivity"
-            android:layout_margin="10dp"
-            android:text="Depreciation"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/cashflowActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtDepreciation"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/depreciationWrittenActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtDepreciation"
-            android:layout_marginLeft="15dp"
-            android:text="Written down Method"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/depreciationStraightActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtDepreciation"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/depreciationWrittenActivity"
-            android:text="Straight Line Method"
-            android:textAllCaps="false" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu" />
 
 
-        <TextView
-            android:id="@+id/txtnpvirr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/depreciationWrittenActivity"
-            android:layout_margin="10dp"
-            android:text="NPV IRR"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/depreciationWrittenActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtnpvirr"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/npvIrrActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtnpvirr"
-            android:layout_marginLeft="15dp"
-            android:text="NPV and IRR"
-            android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txtNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/npvIrrActivity"
-            android:layout_margin="10dp"
-            android:text="Normal Distribution"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/npvIrrActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtNormal"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/normalWithoutActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtNormal"
-            android:layout_marginLeft="15dp"
-            android:text="Mean=0 SD=1"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/normalWithActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtNormal"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/normalWithoutActivity"
-            android:text="Variable mean and sd"
-            android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txtYtm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/normalWithoutActivity"
-            android:layout_margin="10dp"
-            android:text="YTM"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/normalWithoutActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtYtm"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/ytmActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtYtm"
-            android:layout_marginLeft="15dp"
-            android:text="YTM"
-            android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txtCorr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ytmActivity"
-            android:layout_margin="10dp"
-            android:text="Correlation"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/ytmActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtCorr"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/corrActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtCorr"
-            android:layout_marginLeft="15dp"
-            android:text="Correlation"
-            android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txtVar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/corrActivity"
-            android:layout_margin="10dp"
-            android:text="Var"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/corrActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtVar"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/varActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtVar"
-            android:layout_marginLeft="15dp"
-            android:text="Var"
-            android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txtDiscounting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/varActivity"
-            android:layout_margin="10dp"
-            android:text="Discounting"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/varActivity"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/txtDiscounting"
-            android:background="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/discountingActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtDiscounting"
-            android:layout_marginLeft="15dp"
-            android:text="Discounting Factor"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/zerogrowthActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/discountingActivity"
-            android:layout_marginLeft="15dp"
-            android:text="Zero Growth"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/dividedbasedthActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/discountingActivity"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/zerogrowthActivity"
-            android:text="Divided Based"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/constantgrowthActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/discountingActivity"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/dividedbasedthActivity"
-            android:text="Constant Growth"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/durationInYearsActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/constantgrowthActivity"
-            android:layout_marginLeft="15dp"
-            android:text="Duration in Years"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/meanVarianceActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/durationInYearsActivity"
-            android:layout_marginLeft="15dp"
-            android:text="Mean Variance SD"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/factorialPowerActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/meanVarianceActivity"
-            android:layout_marginLeft="15dp"
-            android:text="Factorial Power"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/emiActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/factorialPowerActivity"
-            android:layout_marginLeft="15dp"
-            android:text="EMI"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/regressionActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/emiActivity"
-            android:layout_marginLeft="15dp"
-            android:text="Regression"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/incomeTaxActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/regressionActivity"
-            android:layout_marginLeft="15dp"
-            android:text="Income Tax"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/dep_text_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/incomeTaxActivity"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="Depreciation text 1" />
-
-        <Button
-            android:id="@+id/dep_text_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dep_text_1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="Depreciation text 2" />
-
-        <Button
-            android:id="@+id/npv_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dep_text_2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="25dp"
-            android:text="NPV text" />
-
-
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/npv_text"
-            android:text="Logout"
-            android:textAllCaps="false" />
-
-    </RelativeLayout>
-
-</ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>

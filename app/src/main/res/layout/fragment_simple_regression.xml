@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-<!--        <TextView-->
-<!--            android:id="@+id/simple_heading"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:fontFamily="cursive"-->
-<!--            android:text="Simple Regression"-->
-<!--            android:textColor="#051573"-->
-<!--            android:textSize="36sp" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/simple_heading"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:fontFamily="cursive"-->
+        <!--            android:text="Simple Regression"-->
+        <!--            android:textColor="#051573"-->
+        <!--            android:textSize="36sp" />-->
 
         <TableRow
             android:id="@+id/table_head_simple_regression"
@@ -80,8 +80,8 @@
             android:layout_below="@id/simple_regression_table"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_rounded"
-            android:text="Add Row"
             android:padding="10dp"
+            android:text="Add Row"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
@@ -95,47 +95,87 @@
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/simple_Regression_addBtn"
             android:background="@drawable/button_rounded"
+            android:padding="10dp"
             android:text="Import"
             android:textAllCaps="false"
-            android:padding="10dp"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/see_text"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/res_simple_regression"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/simple_Regression_addBtn"
+            android:layout_below="@id/simple_regression_graph"
             android:layout_marginTop="20dp"
-            android:text="SEE"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:padding="5dp"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/rsquare_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/see_text"
-            android:layout_marginTop="10dp"
-            android:text="RSquare"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/model_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Model"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/see_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="SEE"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/rsquare_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="RSquare"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/variance_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Variance"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/simple_regression_graph"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_below="@id/rsquare_text"
+            android:layout_below="@id/simple_Regression_addBtn"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"/>
+            android:layout_marginEnd="5dp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/simple_regression_calc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/simple_regression_graph"
+            android:layout_below="@id/res_simple_regression"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_rounded"
             android:text="Calculate"

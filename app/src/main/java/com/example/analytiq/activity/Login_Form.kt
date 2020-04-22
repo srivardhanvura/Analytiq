@@ -24,7 +24,6 @@ class Login_Form : AppCompatActivity() {
     lateinit var btn_login: Button
     lateinit var txtForgot: TextView
     lateinit var btn_registerr: Button
-    lateinit var checkobox: CheckBox
     lateinit var googleSignin: SignInButton
     lateinit var mAuth: FirebaseAuth
     lateinit var gsOption: GoogleSignInOptions
@@ -41,7 +40,6 @@ class Login_Form : AppCompatActivity() {
         txtpassword = findViewById(R.id.txt_password)
         btn_login = findViewById(R.id.bttn)
         btn_registerr = findViewById(R.id.btnn)
-        checkobox = findViewById(R.id.ccheck)
         txtForgot = findViewById(R.id.forgotTxt)
         googleSignin = findViewById(R.id.google_btn)
         mAuth = FirebaseAuth.getInstance()
@@ -57,6 +55,7 @@ class Login_Form : AppCompatActivity() {
             val intent = Intent(this@Login_Form, ForgotPassword::class.java)
             startActivity(intent)
         }
+
 
         btn_login.setOnClickListener {
             val enteredemail = txtemail.text.toString().trim()
@@ -77,11 +76,6 @@ class Login_Form : AppCompatActivity() {
                             val user = mAuth.currentUser
                             if (user != null) {
                                 if (user.isEmailVerified) {
-                                    if (checkobox.isChecked) {
-
-                                    } else {
-
-                                    }
                                     val intent = Intent(this@Login_Form, MainActivity::class.java)
                                     startActivity(intent)
                                     finish()
@@ -122,10 +116,6 @@ class Login_Form : AppCompatActivity() {
 
     fun btn_signupForm(view: View) {
         startActivity(Intent(applicationContext, Signup_Form::class.java))
-    }
-
-    fun onCheckboxClicked(view: View) {
-        val checked = (view as CheckBox).isChecked
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

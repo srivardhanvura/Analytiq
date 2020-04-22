@@ -3,6 +3,7 @@
     package="com.example.analytiq">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.STORAGE" />
 
@@ -13,10 +14,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.IncomeTax"></activity>
-        <activity android:name=".activity.RegressionActivity" />
-        <activity android:name=".activity.EMICalculation" />
-        <activity android:name=".activity.FactorialPower" />
+        <activity android:name=".activity.SingleCurrency"></activity>
+        <activity android:name=".activity.CurrencyConversion" />
+        <activity android:name=".activity.ProportionActivity" />
+        <activity android:name=".activity.ProfitActivity" />
+        <activity
+            android:name=".activity.LCM_HCF"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Main2Activity"
+            android:parentActivityName=".activity.MainActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DividendThreeStageModel"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DividendTwoStageMode"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EffectiveDuration"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.IncomeTax"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RegressionActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EMICalculation"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FactorialPower"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.IntroActivity"
             android:resizeableActivity="false"
@@ -129,6 +167,10 @@
             android:name=".activity.Login_Form"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
