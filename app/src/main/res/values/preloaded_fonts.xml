@@ -3,5 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
         <item>@font/alegreya_sc</item>
+        <item>@font/aref_ruqaa</item>
+        <item>@font/bigshot_one</item>
     </array>
 </resources>

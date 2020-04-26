@@ -36,44 +36,66 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:id="@+id/text1"/>-->
 
-        <TextView
-            android:id="@+id/seacond"
-            android:layout_width="wrap_content"
+        <me.biubiubiu.justifytext.library.JustifyTextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/first"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal|center"
-            android:gravity="center"
             android:text="@string/aurkuch"
-            android:textSize="20sp"
-            tools:ignore="RtlCompat" />
+            android:layout_marginTop="40dp"
+            android:textSize="20sp"/>
 
-        <TextView
-            android:id="@+id/third"
-            android:layout_width="wrap_content"
+<!--        <TextView-->
+<!--            android:id="@+id/seacond"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/first"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:layout_gravity="center_horizontal|center"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/aurkuch"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:ignore="RtlCompat" />-->
+
+        <me.biubiubiu.justifytext.library.JustifyTextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/seacond"
-            android:textSize="20sp"
-            android:gravity="center_horizontal"
             android:text="@string/_2kuch"
-            android:textAlignment="textStart"
-            tools:ignore="RtlCompat" />
+            android:textSize="20sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+<!--        <TextView-->
+<!--            android:id="@+id/third"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/seacond"-->
+<!--            android:textSize="20sp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:text="@string/_2kuch"-->
+<!--            android:textAlignment="textStart"-->
+<!--            tools:ignore="RtlCompat" />-->
+
+        <me.biubiubiu.justifytext.library.JustifyTextView
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/third"
-            android:gravity="center_horizontal"
             android:text="@string/_3kuch"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            tools:ignore="RtlCompat" />
+            android:textSize="20sp"/>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/third"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:text="@string/_3kuch"-->
+<!--            android:textAlignment="textStart"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:ignore="RtlCompat" />-->
 
         <Button
             android:id="@+id/btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/seacond"
+            android:layout_alignBottom="@id/text3"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded"
             android:gravity="center"

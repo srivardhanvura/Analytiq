@@ -10,7 +10,6 @@ import android.text.TextUtils
 import android.view.View
 import java.text.DecimalFormat
 
-
 class DurationInYears : AppCompatActivity() {
 
     lateinit var futureValue:EditText
@@ -25,13 +24,13 @@ class DurationInYears : AppCompatActivity() {
     lateinit var heading1:TableRow
     lateinit var heading2:TableRow
     lateinit var tableLayout:TableLayout
+    lateinit var modifiedDuration:EditText
+    lateinit var someText:TextView
+    lateinit var someText1:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_duration_in_years)
-
-        findViewById<ScrollView>(R.id.duration_years_scroll).isHorizontalScrollBarEnabled=false
-        findViewById<ScrollView>(R.id.duration_years_scroll).isVerticalScrollBarEnabled=false
 
         futureValue = findViewById(R.id.fv)
         couponRate = findViewById(R.id.c)
@@ -45,7 +44,9 @@ class DurationInYears : AppCompatActivity() {
         heading1 = findViewById(R.id.table_heading1)
         heading2 = findViewById(R.id.table_heading2)
         tableLayout = findViewById(R.id.table)
-
+        someText = findViewById(R.id.someText)
+        someText1 = findViewById(R.id.someText1)
+        modifiedDuration = findViewById(R.id.mfd)
     }
 
     fun calculate(view: View)
@@ -75,10 +76,10 @@ class DurationInYears : AppCompatActivity() {
 
             var currentprice = 0.0
             var SWX = 0.0
-            fv = (futureValue.text.toString()).toDouble()
-            c =(couponRate.text.toString()).toDouble()
-            ym = (yearsToMaturity.text.toString()).toDouble()
-            ytm =(Ytm.text.toString()).toDouble()
+            fv = java.lang.Double.parseDouble(futureValue.text.toString())
+            c = java.lang.Double.parseDouble(couponRate.text.toString())
+            ym = java.lang.Double.parseDouble(yearsToMaturity.text.toString())
+            ytm = java.lang.Double.parseDouble(Ytm.text.toString())
 
             val decimalFormat = DecimalFormat("#.###")
 
@@ -100,11 +101,11 @@ class DurationInYears : AppCompatActivity() {
                 year.setText(tableLayout.childCount.toString())
                 val cf: Double
                 if (i == Integer.parseInt(yearsToMaturity.text.toString()) - 1) {
-                    cf = fv + (fv * c / 100)
-                    cashflow.setText((decimalFormat.format(cf)).toString())
+                    cf = fv + fv * c / 100
+                    cashflow.setText(decimalFormat.format(cf).toString())
                 } else {
                     cf = fv * c / 100
-                    cashflow.setText((decimalFormat.format(cf)).toString())
+                    cashflow.setText(decimalFormat.format(cf).toString())
                 }
 
                 val w = cf / Math.pow(
@@ -113,22 +114,30 @@ class DurationInYears : AppCompatActivity() {
                 )
 
                 currentprice += w
-                presentValue.setText((decimalFormat.format(w)).toString())
+                presentValue.setText(decimalFormat.format(w).toString())
 
                 val wx = java.lang.Double.parseDouble(tableLayout.childCount.toString()) * w
 
                 SWX += wx
 
-                WX.setText((decimalFormat.format(wx)).toString())
+                WX.setText(decimalFormat.format(wx).toString())
             }
 
 
-            spv.setText((decimalFormat.format(currentprice)).toString())
-            currentPrice.setText((decimalFormat.format(currentprice)).toString())
-            swx.setText((decimalFormat.format(SWX)).toString())
-            duration.setText((decimalFormat.format(SWX / currentprice)).toString())
+            spv.setText(decimalFormat.format(currentprice).toString())
+            currentPrice.setText(decimalFormat.format(currentprice).toString())
+            swx.setText(decimalFormat.format(SWX).toString())
+            duration.setText(decimalFormat.format(SWX / currentprice).toString() + " years")
+            modifiedDuration.setText(decimalFormat.format(SWX / currentprice / (1 + ytm / 100)).toString() + " %")
+            someText1.visibility = View.VISIBLE
+            someText.visibility = View.VISIBLE
+            someText.text =
+                "So,if there is 1% increase in yield, bond price will decrease by " + decimalFormat.format(
+                    SWX / currentprice / (1 + ytm / 100)
+                ).toString() + " %"
         } else {
             Toast.makeText(this, "Fill Properly", Toast.LENGTH_SHORT).show()
+
         }
     }
 }

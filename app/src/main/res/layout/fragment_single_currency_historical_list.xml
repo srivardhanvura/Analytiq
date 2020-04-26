@@ -49,9 +49,20 @@
 
             <ProgressBar
                 android:id="@+id/progress_circular"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/wait_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_circular"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="This may take few minutes.."
+                android:textColor="@color/colorPrimary"
                 android:visibility="gone"/>
 
             <TextView

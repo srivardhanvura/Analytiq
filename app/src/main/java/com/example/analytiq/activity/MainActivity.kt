@@ -18,6 +18,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.analytiq.R
 import com.example.analytiq.fragment.AboutUsFragment
+import com.example.analytiq.fragment.Feedback
 import com.example.analytiq.fragment.HomeFragment
 import com.example.analytiq.fragment.TeamsFragment
 import com.google.android.material.navigation.NavigationView
@@ -113,6 +114,12 @@ class MainActivity : AppCompatActivity() {
                     alert.setNegativeButton("Cancel") { t, l -> }
                     alert.create()
                     alert.show()
+                    drawer_layout.closeDrawers()
+                }
+
+                R.id.nav_help->{
+                    supportFragmentManager.beginTransaction().replace(R.id.main_frame_layout,Feedback()).commit()
+                    supportActionBar?.title="Help & Feedback"
                     drawer_layout.closeDrawers()
                 }
             }

@@ -1,10 +1,12 @@
 package com.example.analytiq.activity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.util.Patterns
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.example.analytiq.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -14,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -58,16 +61,26 @@ class Login_Form : AppCompatActivity() {
 
 
         btn_login.setOnClickListener {
+
+            val view=this.currentFocus
+            if(view!=null){
+                val imm=getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view.windowToken,0)
+            }
+
             val enteredemail = txtemail.text.toString().trim()
             val enteredpass = txtpassword.text.toString().trim()
 
             if (enteredemail.isEmpty()) {
-                Toast.makeText(this@Login_Form, "Enter email", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@Login_Form, "Enter email", Toast.LENGTH_SHORT).show()
+                txtemail.setError("Enter email")
             } else if (enteredpass.isEmpty()) {
-                Toast.makeText(this@Login_Form, "Enter password", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@Login_Form, "Enter password", Toast.LENGTH_SHORT).show()
+                txtpassword.setError("Enter Password")
             } else if (!Patterns.EMAIL_ADDRESS.matcher(enteredemail).matches()) {
-                Toast.makeText(this@Login_Form, "Please enter proper email-id", Toast.LENGTH_SHORT)
-                    .show()
+//                Toast.makeText(this@Login_Form, "Please enter proper email-id", Toast.LENGTH_SHORT)
+//                    .show()
+                Snackbar.make(this.currentFocus!!,"Please enter proper email-id",Snackbar.LENGTH_SHORT).show()
             } else {
                 mAuth.signInWithEmailAndPassword(enteredemail, enteredpass)
                     .addOnCompleteListener(this) {
@@ -87,20 +100,21 @@ class Login_Form : AppCompatActivity() {
 //                                ).show()
                                 } else {
                                     progress.visibility = View.GONE
-                                    Toast.makeText(
-                                        this@Login_Form,
+                                    Snackbar.make(
+                                        this.currentFocus!!,
                                         "Please verify user email",
-                                        Toast.LENGTH_SHORT
+                                        Snackbar.LENGTH_SHORT
                                     )
                                         .show()
                                 }
                             }
                         } else {
                             progress.visibility = View.GONE
-                            Toast.makeText(
-                                this@Login_Form,
-                                it.exception?.message,
-                                Toast.LENGTH_SHORT
+                            val cseq:CharSequence= it.exception?.message.toString()
+                            Snackbar.make(
+                                this.currentFocus!!,
+                                cseq,
+                                Snackbar.LENGTH_SHORT
                             )
                                 .show()
                         }
@@ -128,7 +142,7 @@ class Login_Form : AppCompatActivity() {
                     firebaseAuthWithGoogle(account)
                 }
             } catch (e: ApiException) {
-                Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+                Snackbar.make(this.currentFocus!!, "Google sign in failed:(", Snackbar.LENGTH_LONG).show()
             }
         }
     }
@@ -148,7 +162,7 @@ class Login_Form : AppCompatActivity() {
 //                        .show()
                 }
             } else {
-                Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+                Snackbar.make(this.currentFocus!!, "Google sign in failed:(", Snackbar.LENGTH_LONG).show()
             }
         }
     }

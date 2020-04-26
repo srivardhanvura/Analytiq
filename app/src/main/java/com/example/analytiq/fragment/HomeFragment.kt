@@ -14,16 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.analytiq.R
-import com.example.analytiq.activity.CurrencyConversion
-import com.example.analytiq.activity.LCM_HCF
-import com.example.analytiq.activity.ProfitActivity
-import com.example.analytiq.activity.ProportionActivity
+import com.example.analytiq.activity.*
 import com.example.analytiq.adapter.HomeAdapter
 import com.example.analytiq.model.HomeListData
 
-/**
- * A simple [Fragment] subclass.
- */
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
@@ -50,28 +44,15 @@ class HomeFragment : Fragment() {
         listOfItems.add(HomeListData(R.drawable.button6, "Duration of Bond", R.drawable.clock))
         listOfItems.add(HomeListData(R.drawable.button8, "Normal Distribution", R.drawable.normal))
         listOfItems.add(HomeListData(R.drawable.button, "EMI", R.drawable.emi))
+        listOfItems.add(HomeListData(R.drawable.button7, "Term Structure", R.drawable.interest))
+        listOfItems.add(HomeListData(R.drawable.button4, "Basic Maths", R.drawable.math))
+        listOfItems.add(HomeListData(R.drawable.button2, "Currency", R.drawable.currency))
 
         val adapter = HomeAdapter(activity as Context,listOfItems,activity as Activity)
         val layout = LinearLayoutManager(activity as Context)
         val recycler=view.findViewById<RecyclerView>(R.id.home_recycler)
         recycler.adapter=adapter
         recycler.layoutManager=layout
-
-        view.findViewById<Button>(R.id.hcf_btn).setOnClickListener {
-            startActivity(Intent(activity as Context,LCM_HCF::class.java))
-        }
-
-        view.findViewById<Button>(R.id.profit_btn).setOnClickListener {
-            startActivity(Intent(activity as Context,ProfitActivity::class.java))
-        }
-
-        view.findViewById<Button>(R.id.proportion_btn).setOnClickListener {
-            startActivity(Intent(activity as Context,ProportionActivity::class.java))
-        }
-
-        view.findViewById<Button>(R.id.currency_btn).setOnClickListener {
-            startActivity(Intent(activity as Context,CurrencyConversion::class.java))
-        }
 
         return view
     }

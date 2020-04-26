@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/r"
+    android:padding="18dp"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--    heading-->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Linear Equation"
+            android:textColor="#051573"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:fontFamily="cursive" />
+
+
+        <!--    sub1-->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_marginTop="20dp"
+            android:text="Equation 1"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/rel1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView2"
+            android:gravity="center_horizontal">
+
+            <!--    a1-->
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <!--    eq1 x-->
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/editText"
+                android:text="x"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!--    eq1 +-->
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/textView6"
+                android:text=" +"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <!--    b1-->
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/textView7"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <!--    eq1 y-->
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/editText3"
+                android:text="y"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!--eq1 =-->
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/textView8"
+                android:text=" ="
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <!--    c1-->
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/textView9"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+        </RelativeLayout>
+
+        <!--    sub2-->
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel1"
+            android:layout_marginTop="30dp"
+            android:text="Equation 2"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/rel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView10"
+            android:gravity="center_horizontal">
+
+            <!--    a2-->
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <!--    eq2 x-->
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:text="x"
+                android:layout_marginTop="30dp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@id/editText5"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!--eq2 +-->
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text=" +"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@id/textView11"
+                android:textStyle="bold" />
+
+            <!--    b2-->
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/textView12"
+                android:inputType="numberSigned"/>
+
+            <!--    eq2 y-->
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="y"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@id/editText6"
+                android:textStyle="bold"/>
+
+            <!--    eq2 equal-->
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text=" ="
+                android:layout_toRightOf="@id/textView13"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <!--    c2-->
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/textView14"
+                android:ems="10"
+                android:inputType="numberSigned"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel2"
+            android:gravity="center_horizontal"
+            android:visibility="gone">
+
+                <!--    x-->
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="X"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"/>
+
+                <!--    equal1-->
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@id/textView15"
+                    android:text=" ="
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <!--    res1-->
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/textView16"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="30dp"
+                    android:text="             "/>
+
+                <!--    y-->
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@id/textView15"
+                    android:textColor="@android:color/black"
+                    android:text="Y"
+                    android:textStyle="bold"/>
+
+                <!--    equal2-->
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@id/textView15"
+                    android:layout_toRightOf="@id/textView18"
+                    android:text=" ="
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <!--    res2-->
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView15"
+                    android:layout_toRightOf="@id/textView19"
+                    android:layout_marginTop="30dp"
+                    android:text="             "
+                    android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <!--    button-->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_rounded"
+            android:text="Calculate"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/rel3"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+</ScrollView>

@@ -24,7 +24,6 @@ class YTMActivity : AppCompatActivity() {
         adapter.addFrag(PlainVanillaBond(), "Plain Vanilla Bond")
         adapter.addFrag(NonPlainVanillaBond(), "Non Plain Vanilla Bond")
         adapter.addFrag(PerpetualBond(), "Perpetual Bond")
-        adapter.addFrag(CouponBearing(), "Coupon Bearing Bond")
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
     }

@@ -1,21 +1,16 @@
-package com.example.analytiq.fragment
-
+package com.example.analytiq.activity
 
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.example.analytiq.R
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
 import org.apache.poi.ss.usermodel.Cell
@@ -27,27 +22,18 @@ import java.io.IOException
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 
-/**
- * A simple [Fragment] subclass.
- */
-class CouponBearing : Fragment() {
+class CouponBearingBond : AppCompatActivity() {
 
     lateinit var tableLayout: TableLayout
     lateinit var calculateStr: LinearLayout
     val STORAGE_PERMISSION=1
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_coupon_bearing_bond, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_coupon_bearing_bond)
 
-        view.findViewById<ScrollView>(R.id.coupon_bearing_scroll).isHorizontalScrollBarEnabled=false
-        view.findViewById<ScrollView>(R.id.coupon_bearing_scroll).isVerticalScrollBarEnabled=false
-
-        tableLayout = view.findViewById(R.id.table)
-        calculateStr = view.findViewById(R.id.calculate_str)
+        tableLayout = findViewById(R.id.table)
+        calculateStr =findViewById(R.id.calculate_str)
 
         for (i in 0 until 4) {
             val tableRow =
@@ -61,7 +47,7 @@ class CouponBearing : Fragment() {
             }
         }
 
-        view.findViewById<Button>(R.id.addRow).setOnClickListener {
+        findViewById<Button>(R.id.addRow).setOnClickListener {
             val tableRow =
                 getLayoutInflater().inflate(R.layout.coupon_bearing_bond_rows, null) as TableRow
             tableLayout.addView(tableRow)
@@ -69,9 +55,9 @@ class CouponBearing : Fragment() {
             duration.setText((tableLayout.getChildCount()).toString())
         }
 
-        view.findViewById<Button>(R.id.import_btn).setOnClickListener {
+        findViewById<Button>(R.id.import_btn).setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                    activity as Context,
+                    this,
                     android.Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
@@ -84,7 +70,7 @@ class CouponBearing : Fragment() {
             }
         }
 
-        view.findViewById<Button>(R.id.calculate).setOnClickListener {
+        findViewById<Button>(R.id.calculate).setOnClickListener {
             calculateStr.removeAllViews()
             for (i in 0 until tableLayout.childCount) {
                 val tableRow = tableLayout.getChildAt(i) as TableRow
@@ -132,7 +118,7 @@ class CouponBearing : Fragment() {
                             FV.getText()
                         )
                     ) {
-                        Toast.makeText(activity as Context, "Fill Properly", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Fill Properly", Toast.LENGTH_SHORT).show()
                     }
                     break
 
@@ -179,8 +165,8 @@ class CouponBearing : Fragment() {
 
             }
         }
-        return view
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         when (requestCode) {
@@ -193,7 +179,7 @@ class CouponBearing : Fragment() {
                         if (path.endsWith(".xlsx")) {
 
                             try {
-                                val inputstream = activity?.contentResolver?.openInputStream(data1)
+                                val inputstream = contentResolver.openInputStream(data1)
                                 val excelfile = XSSFWorkbook(inputstream)
                                 val sheet = excelfile.getSheetAt(0)
                                 val formulaEvaluator =
@@ -205,7 +191,7 @@ class CouponBearing : Fragment() {
                                     val cellCount = row.physicalNumberOfCells
                                     if (cellCount > 3) {
                                         Toast.makeText(
-                                            activity as Context,
+                                            this,
                                             "Number of columns is greater than 2",
                                             Toast.LENGTH_SHORT
                                         ).show()
@@ -233,14 +219,14 @@ class CouponBearing : Fragment() {
                                 }
                             } catch (e: IOException) {
                                 Toast.makeText(
-                                    activity as Context,
+                                    this,
                                     "Error reading input stream",
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
                             } catch (e: FileNotFoundException) {
                                 Toast.makeText(
-                                    activity as Context,
+                                    this,
                                     "File Not Found",
                                     Toast.LENGTH_SHORT
                                 )
@@ -248,14 +234,14 @@ class CouponBearing : Fragment() {
                             }
                         } else {
                             Toast.makeText(
-                                activity as Context,
+                                this,
                                 "File type not supported",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     } else {
                         Toast.makeText(
-                            activity as Context,
+                            this,
                             "Some error occurred",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -292,7 +278,7 @@ class CouponBearing : Fragment() {
             }
         } catch (e: NullPointerException) {
             Toast.makeText(
-                activity as Context,
+                this,
                 "getCellAsString: NullPointerException: " + e.message,
                 Toast.LENGTH_SHORT
             ).show()
@@ -305,18 +291,18 @@ class CouponBearing : Fragment() {
         val permi=Array<String>(1,{i->""})
         permi[0]=android.Manifest.permission.READ_EXTERNAL_STORAGE
 
-        if(ActivityCompat.shouldShowRequestPermissionRationale(this.requireActivity(),android.Manifest.permission.READ_EXTERNAL_STORAGE)){
-            val alert= AlertDialog.Builder(activity as Context)
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+            val alert= AlertDialog.Builder(this)
             alert.setTitle("Storage permission required")
             alert.setMessage("Storage permission required to import excel files")
             alert.setPositiveButton("Ok") { text, listener ->
-                ActivityCompat.requestPermissions(this.requireActivity(), permi, STORAGE_PERMISSION)
+                ActivityCompat.requestPermissions(this, permi, STORAGE_PERMISSION)
             }
             alert.setNegativeButton("Cancel") { text, listener -> }
             alert.create()
             alert.show()
         }else{
-            ActivityCompat.requestPermissions(this.requireActivity(),permi,STORAGE_PERMISSION)
+            ActivityCompat.requestPermissions(this,permi,STORAGE_PERMISSION)
         }
     }
 
@@ -327,13 +313,11 @@ class CouponBearing : Fragment() {
     ) {
         if(requestCode==STORAGE_PERMISSION){
             if(!(grantResults.size>0&&grantResults[0]== PackageManager.PERMISSION_GRANTED)){
-                Toast.makeText(activity as Context, "Permission denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-
     }
-
 
 }

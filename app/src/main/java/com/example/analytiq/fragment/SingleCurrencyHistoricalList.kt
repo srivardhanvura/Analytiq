@@ -3,12 +3,15 @@ package com.example.analytiq.fragment
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.example.analytiq.R
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
@@ -44,6 +47,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
     private val currencyData = ArrayList<Currency>()
     val mCurrentDate = currentDate
     val mCurrency = currency
+    lateinit var progress_text: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +57,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
             inflater.inflate(R.layout.fragment_single_currency_historical_list, container, false)
 
         progressBar = view.findViewById(R.id.progress_circular)
+        progress_text = view.findViewById(R.id.wait_text)
         noData = view.findViewById(R.id.no_data)
         val singleCurrencyRecyclerview =
             view.findViewById<RecyclerView>(R.id.single_currency_recyclerview)
@@ -68,6 +73,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
         if (isConnected) {
 
             progressBar!!.visibility = View.VISIBLE
+            progress_text.visibility = View.VISIBLE
             noData!!.text = null
             when (mMode) {
                 1 -> activity!!.supportLoaderManager.initLoader<ArrayList<Currency>>(1, null, this)
@@ -79,6 +85,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
 
         } else {
             progressBar!!.visibility = View.GONE
+            progress_text.visibility = View.GONE
             if (currencyData.size == 0) {
                 noData!!.text = "No Internet Connection found!"
             }
@@ -92,13 +99,14 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<ArrayList<Currency>> {
 
-        return CurrencyDataLoader(context!!, id,mCurrency,mCurrentDate)
+        return CurrencyDataLoader(context!!, id, mCurrency, mCurrentDate)
 
     }
 
     override fun onLoadFinished(loader: Loader<ArrayList<Currency>>, data: ArrayList<Currency>) {
         if (data.size != 0) {
             progressBar!!.visibility = View.GONE
+            progress_text.visibility = View.GONE
             noData!!.text = null
             currencyData.clear()
             currencyData.addAll(data)
@@ -106,6 +114,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
             singleCurrencyAdapter!!.notifyDataSetChanged()
         } else {
             progressBar!!.visibility = View.GONE
+            progress_text.visibility = View.GONE
             if (currencyData.size == 0) {
                 noData!!.text = "Sorry, Currently no data is available"
             }
@@ -116,7 +125,12 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
         currencyData.clear()
     }
 
-    private class CurrencyDataLoader(context: Context, internal var mId: Int,currency:String,currentDate:Date) :
+    private class CurrencyDataLoader(
+        context: Context,
+        internal var mId: Int,
+        currency: String,
+        currentDate: Date
+    ) :
         AsyncTaskLoader<ArrayList<Currency>>(context) {
 
         override fun onStartLoading() {
@@ -127,8 +141,9 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
         override fun loadInBackground(): ArrayList<Currency>? {
             return fetchCurrencyData(mId)
         }
-        val mCurrency=currency
-        val mCurrentDate=currentDate
+
+        val mCurrency = currency
+        val mCurrentDate = currentDate
 
         private fun fetchCurrencyData(mId: Int): ArrayList<SingleCurrencyHistoricalList.Currency>? {
             val decimalFormat = DecimalFormat("#.###")

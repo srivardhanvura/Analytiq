@@ -14,39 +14,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/hcf_btn" />
-
-        <Button
-            android:id="@+id/hcf_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="HCF &amp; LCM" />
-
-        <Button
-            android:id="@+id/profit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/hcf_btn"
-            android:text="Profit" />
-
-        <Button
-            android:id="@+id/proportion_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/profit_btn"
-            android:text="Proportion" />
-
-        <Button
-            android:id="@+id/currency_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/proportion_btn"
-            android:text="Currency"/>
+            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

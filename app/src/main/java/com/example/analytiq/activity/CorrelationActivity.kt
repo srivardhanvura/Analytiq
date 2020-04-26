@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.view.View
 import android.widget.*
@@ -41,7 +42,7 @@ class CorrelationActivity : AppCompatActivity() {
     lateinit var resTable: TableLayout
     lateinit var resTableHead: TableRow
     lateinit var graph: GraphView
-    val STORAGE_PERMISSION=1
+    val STORAGE_PERMISSION = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -251,21 +252,54 @@ class CorrelationActivity : AppCompatActivity() {
                                     excelfile.creationHelper.createFormulaEvaluator()
 
                                 val rows = sheet.physicalNumberOfRows
-                                for (i in 0 until rows) {
-                                    val row = sheet.getRow(i)
-                                    val cellCount = row.physicalNumberOfCells
-                                    if (cellCount > 2) {
-                                        Toast.makeText(
-                                            this@CorrelationActivity,
-                                            "Number of columns is greater than 2",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        return
-                                    }
-                                }
+                                val q = rows / 200
+                                val r = rows % 200
                                 table.removeAllViews()
 
-                                for (i in 0 until rows) {
+                                var qt = 0
+                                for (m in 0 until q) {
+                                    for (i in m * 200 until (m + 1) * 200) {
+                                        val row = sheet.getRow(i)
+                                        val cellCount = row.physicalNumberOfCells
+                                        if (cellCount > 2) {
+                                            Toast.makeText(
+                                                this@CorrelationActivity,
+                                                "Number of columns is greater than 2",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                            table.removeAllViews()
+                                            for (k in 0..3) {
+                                                val view = layoutInflater.inflate(
+                                                    R.layout.correlation_rows,
+                                                    null
+                                                ) as TableRow
+                                                table.addView(view)
+                                            }
+                                            return
+                                        }
+                                    }
+
+                                    for (i in m * 200 until (m + 1) * 200) {
+                                        val view = layoutInflater.inflate(
+                                            R.layout.correlation_rows,
+                                            null
+                                        ) as TableRow
+                                        table.addView(view)
+
+                                        val row = sheet.getRow(i)
+                                        val count = row.physicalNumberOfCells
+
+                                        for (j in 0 until count) {
+                                            val value = getCellAsString(row, j, formulaEvaluator)
+                                            val edit = view.getChildAt(j) as EditText
+                                            edit.setText(value)
+                                        }
+
+                                    }
+                                    qt++
+                                    Handler().postDelayed({},2000)
+                                }
+                                for (i in qt * 200 until (qt * 200) + r) {
                                     val view = layoutInflater.inflate(
                                         R.layout.correlation_rows,
                                         null
@@ -280,7 +314,6 @@ class CorrelationActivity : AppCompatActivity() {
                                         val edit = view.getChildAt(j) as EditText
                                         edit.setText(value)
                                     }
-
                                 }
                             } catch (e: IOException) {
                                 Toast.makeText(
@@ -351,23 +384,32 @@ class CorrelationActivity : AppCompatActivity() {
 
         return value
     }
-    fun askStoragePermission(){
 
-        val permi=Array<String>(1,{i->""})
-        permi[0]=android.Manifest.permission.READ_EXTERNAL_STORAGE
+    fun askStoragePermission() {
 
-        if(ActivityCompat.shouldShowRequestPermissionRationale(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)){
-            val alert=AlertDialog.Builder(this)
+        val permi = Array<String>(1, { i -> "" })
+        permi[0] = android.Manifest.permission.READ_EXTERNAL_STORAGE
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            val alert = AlertDialog.Builder(this)
             alert.setTitle("Storage permission required")
             alert.setMessage("Storage permission required to import excel files")
             alert.setPositiveButton("Ok") { text, listener ->
-                ActivityCompat.requestPermissions(this@CorrelationActivity, permi, STORAGE_PERMISSION)
+                ActivityCompat.requestPermissions(
+                    this@CorrelationActivity,
+                    permi,
+                    STORAGE_PERMISSION
+                )
             }
             alert.setNegativeButton("Cancel") { text, listener -> }
             alert.create()
             alert.show()
-        }else{
-            ActivityCompat.requestPermissions(this,permi,STORAGE_PERMISSION)
+        } else {
+            ActivityCompat.requestPermissions(this, permi, STORAGE_PERMISSION)
         }
     }
 
@@ -376,8 +418,8 @@ class CorrelationActivity : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if(requestCode==STORAGE_PERMISSION){
-            if(!(grantResults.size>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)){
+        if (requestCode == STORAGE_PERMISSION) {
+            if (!(grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
             }
         }

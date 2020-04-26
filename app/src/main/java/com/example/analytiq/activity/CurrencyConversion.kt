@@ -30,7 +30,6 @@ import java.text.DecimalFormat
 class CurrencyConversion : AppCompatActivity(),
     LoaderManager.LoaderCallbacks<ArrayList<CurrencyConversion.Currency>> {
 
-    //    val LOG_TAG:String = CurrencyConversion.class.getSimpleName()
     lateinit var currencyRecyclerView: RecyclerView
     lateinit var noData: TextView
     lateinit var progressBar: ProgressBar
@@ -47,8 +46,6 @@ class CurrencyConversion : AppCompatActivity(),
         noData = findViewById(R.id.no_data)
         currencyRecyclerView = findViewById(R.id.currency_recyclerview)
         currencyRecyclerView.layoutManager = LinearLayoutManager(this)
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(currencyRecyclerView.getContext(),DividerItemDecoration.VERTICAL);
-//        currencyRecyclerView.addItemDecoration(dividerItemDecoration);
 
         var isConnected = ConnectivityManager().checkConnectivity(this)
         if (isConnected) {
@@ -113,14 +110,27 @@ class CurrencyConversion : AppCompatActivity(),
         }
     }
 
+    fun nodata() {
+        noData.text = "No Internet Connection found!"
+    }
+
     override fun onLoaderReset(loader: Loader<ArrayList<Currency>>) {
         currencyData.clear()
     }
 
-    private class CurrencyLoader(context: Context) : AsyncTaskLoader<ArrayList<Currency>>(context) {
+    class CurrencyLoader(context: Context) : AsyncTaskLoader<ArrayList<Currency>>(context) {
+
+        val view = LayoutInflater.from(this.context)
+            .inflate(R.layout.activity_currency_conversion, null, false)
+        val noData: TextView = view.findViewById(R.id.no_data)
 
         override fun loadInBackground(): ArrayList<Currency>? {
-            return fetchCurrencyData()
+            if (ConnectivityManager().checkConnectivity(this.context)) {
+                return fetchCurrencyData()
+            } else {
+                noData.text = "No Internet Connection found!"
+                return null
+            }
         }
 
         override fun onStartLoading() {

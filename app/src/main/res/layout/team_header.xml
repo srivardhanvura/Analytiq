@@ -13,9 +13,9 @@
         android:gravity="center_horizontal"
         android:padding="2dp"
         android:text="Team AnalytiQ"
-        android:textColor="#051573"
+        android:textColor="#E91E63"
         android:textSize="36sp"
-        android:textStyle="bold"
-        app:fontFamily="cursive" />
+        android:textStyle="italic"
+        app:fontFamily="@font/bigshot_one" />
 
 </LinearLayout>

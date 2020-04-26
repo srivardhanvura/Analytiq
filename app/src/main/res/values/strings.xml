@@ -42,7 +42,7 @@ The rate of Depreciation =\n\n
         \n\n
 <u>Calculate Now</u></string>
     <string name="npv1"><u>NPV and IRR</u></string>
-    <string name="npv2">NPV is <b>calculated</b> by taking the difference between the present value of cash inflows and present value of cash outflows over a period of time. As the name suggests, <b>net present value</b> is nothing but net off of the present value of cash inflows and outflows by discounting the flows at a specified rate.\n\n\n1  <b>IRR</b>  is the rate of growth a project is expected to generate.\n2.	<b>IRR</b> is calculated by the condition that the discount rate is set such that the NPV = 0 for a project.\n3.	<b>IRR</b>  is used in capital budgeting to decide which projects or investments to undertake and which to forgo
+    <string name="npv2">NPV is <b>calculated</b> by taking the difference between the present value of cash inflows and present value of cash outflows over a period of time. As the name suggests, <b>net present value</b> is nothing but net off of the present value of cash inflows and outflows by discounting the flows at a specified rate.\n\n\n1  <b>IRR</b>  is the rate of growth a project is expected to generate.\n2.	<b>IRR</b> is calculated by the condition that the discount rate is set such that the NPV = 0 for a project.\n3.	<b>IRR</b>  is used in capital budgeting to decide which projects or investments to undertake and which to forgo.
 </string>
 
     <string name="nd"><b>Financial Calculator</b></string>
@@ -56,6 +56,24 @@ The rate of Depreciation =\n\n
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_setting">Settings</string>
+    <string name="txtHintEnter">Enter number</string>
+    <string name="btnConvert">Convert</string>
+
+
+    <string-array name="unit_arrays">
+        <item>Meter to Km</item>
+        <item>Km to Meter</item>
+        <item>Meter to Centi</item>
+        <item>Km to Centi</item>
+        <item>Centi to Meter</item>
+        <item>Centi to Km</item>
+        <item>Centi to Milli</item>
+        <item>Milli to Centi</item>
+        <item>Meter to Milli</item>
+        <item>Milli to Meter</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

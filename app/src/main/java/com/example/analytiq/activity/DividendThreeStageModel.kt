@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.*
 import com.example.analytiq.R
 import java.text.DecimalFormat
+import android.widget.Toast
+import android.widget.EditText
 
 class DividendThreeStageModel : AppCompatActivity() {
 
@@ -53,117 +55,115 @@ class DividendThreeStageModel : AppCompatActivity() {
 
         heading1 = findViewById(R.id.table_heading1)
         tableLayout = findViewById(R.id.table)
-    }
+        val calculate=findViewById<Button>(R.id.calculate)
 
-    fun calculateThree(view: View) {
+        calculate.setOnClickListener {
+            heading1.visibility = View.GONE
+            set.visibility = View.GONE
+            tableLayout.removeAllViews()
 
-        heading1.setVisibility(View.GONE)
-        set.setVisibility(View.GONE)
-        tableLayout.removeAllViews()
+            Dividend.text.clear()
+            DF.text.clear()
+            PvOfDividend.text.clear()
+            PV.text.clear()
 
-        Dividend.getText().clear()
-        DF.getText().clear()
-        PvOfDividend.getText().clear()
-        PV.getText().clear()
+            if (!TextUtils.isEmpty(RecentDividend.text) &&
+                !TextUtils.isEmpty(FirstGrowthTime.text) &&
+                !TextUtils.isEmpty(FirstGrowthRate.text) &&
+                !TextUtils.isEmpty(SecondGrowthTime.text) &&
+                !TextUtils.isEmpty(SecondGrowthRate.text) &&
+                !TextUtils.isEmpty(FinalGrowthRate.text) &&
+                !TextUtils.isEmpty(DiscountRate.text)
+            ) {
 
-        if (!TextUtils.isEmpty(RecentDividend.getText()) &&
-            !TextUtils.isEmpty(FirstGrowthTime.getText()) &&
-            !TextUtils.isEmpty(FirstGrowthRate.getText()) &&
-            !TextUtils.isEmpty(SecondGrowthTime.getText()) &&
-            !TextUtils.isEmpty(SecondGrowthRate.getText()) &&
-            !TextUtils.isEmpty(FinalGrowthRate.getText()) &&
-            !TextUtils.isEmpty(DiscountRate.getText())
-        ) {
+                var dividnd = RecentDividend.text.toString().toDouble()
+                var de = 0.0
+                var def = 0.0
+                var dff = 0.0
+                var pv = 0.0
 
-            val fgt: Int = Integer.parseInt(FirstGrowthTime.getText().toString())
-            val sgt: Int = Integer.parseInt(SecondGrowthTime.getText().toString())
+                val rd = RecentDividend.text.toString().toDouble()
+                val fgr = FirstGrowthRate.text.toString().toDouble()
+                val sgr = SecondGrowthRate.text.toString().toDouble()
+                val fGr = FinalGrowthRate.text.toString().toDouble()
+                val dr = DiscountRate.text.toString().toDouble()
 
-            val rd: Double = (RecentDividend.getText().toString()).toDouble()
-            val fgr: Double = (FirstGrowthRate.getText().toString()).toDouble()
-            val sgr: Double = (SecondGrowthRate.getText().toString()).toDouble()
-            val fGr: Double = (FinalGrowthRate.getText().toString()).toDouble()
-            val dr: Double = (DiscountRate.getText().toString()).toDouble()
+                val decimalFormat = DecimalFormat("#.###")
 
-            var dividnd = (RecentDividend.getText().toString()).toDouble()
-            var de = 0.0
-            var def = 0
-            var dff = 0
-            var pv = 0.0
-
-            val decimalFormat = DecimalFormat("#.###")
-
-            heading1.setVisibility(View.VISIBLE)
-            set.setVisibility(View.VISIBLE)
+                val fgt = FirstGrowthTime.text.toString().toInt()
+                val sgt = SecondGrowthTime.text.toString().toInt()
 
 
-            for (i in 0 until (FirstGrowthTime.getText().toString().toInt()) + (SecondGrowthTime.getText().toString().toInt())) {
-                val tableRow = getLayoutInflater().inflate(R.layout.subthree, null) as TableRow
-                tableLayout.addView(tableRow)
+                heading1.visibility = View.VISIBLE
+                set.visibility = View.VISIBLE
 
 
-                val year = tableRow.getChildAt(0) as EditText
-                year.setText((tableLayout.getChildCount()).toString())
-                val dividend = tableRow.getChildAt(1) as EditText
-                val extraValueET = tableRow.getChildAt(2) as EditText
-                if (i != fgt + sgt - 1) {
-                    extraValueET.setVisibility(View.INVISIBLE)
-                }
-                val df = tableRow.getChildAt(3) as EditText
-                val pvfdv = tableRow.getChildAt(4) as EditText
+                for (i in 0 until FirstGrowthTime.text.toString().toInt() + SecondGrowthTime.text.toString().toInt() + 1) {
+                    val tableRow = layoutInflater.inflate(R.layout.subthree, null) as TableRow
+                    tableLayout.addView(tableRow)
 
 
-                dff = Math.pow(
-                    1 / ((dr / 100) + 1),
-                    ((tableLayout.getChildCount()).toString().toDouble())
-                )
-                    .toInt()
-                df.setText((decimalFormat.format(dff)))
-
-                if (i < fgt) {
-
-                    dividnd += dividnd * (fgr / 100) // Percent to decimal
-                    dividend.setText(((decimalFormat.format(dividnd))))
-
-                    val pvT = dividnd * dff
-                    pv += pvT
-                    pvfdv.setText((decimalFormat.format(pvT)))
-                } else if (i >= fgt && i < fgt + sgt) {
-                    dividnd += dividnd * sgr / 100
-                    dividend.setText(((decimalFormat.format(dividnd))))
-
-//                    dff = Math.pow(1 / (dr + 1),
-//                            Double.parseDouble(String.valueOf(tableLayout.getChildCount())));
-//                    df.setText(String.valueOf(decimalFormat.format(dff)));
+                    val year = tableRow.getChildAt(0) as EditText
+                    year.setText(tableLayout.childCount.toString())
+                    val dividend = tableRow.getChildAt(1) as EditText
+                    val extraValueET = tableRow.getChildAt(2) as EditText
+                    if (i != fgt + sgt - 1) {
+                        extraValueET.visibility = View.INVISIBLE
+                    }
+                    val df = tableRow.getChildAt(3) as EditText
+                    val pvfdv = tableRow.getChildAt(4) as EditText
 
 
-                    if (i == fgt + sgt - 1) {
-                        de = dividnd
-                        def = dff
-                    } else {
+                    val childCount=tableLayout.childCount.toDouble()
+
+                    dff = Math.pow((1 / (dr / 100 + 1)), childCount)
+                    df.setText(decimalFormat.format(dff))
+
+                    if (i < fgt) {
+
+                        dividnd += dividnd * (fgr / 100)
+                        dividend.setText(decimalFormat.format(dividnd))
+
                         val pvT = dividnd * dff
                         pv += pvT
-                        pvfdv.setText((decimalFormat.format(pvT)))
+                        pvfdv.setText(decimalFormat.format(pvT))
+                    } else if (i >= fgt && i < fgt + sgt) {
+                        dividnd += dividnd * sgr / 100
+                        dividend.setText(decimalFormat.format(dividnd))
+
+                        //                    dff = Math.pow(1 / (dr + 1),
+                        //                            Double.parseDouble(String.valueOf(tableLayout.getChildCount())));
+                        //                    df.setText(String.valueOf(decimalFormat.format(dff)));
+
+
+                        if (i == fgt + sgt - 1) {
+                            de = dividnd
+                            def = dff
+                        } else {
+                            val pvT = dividnd * dff
+                            pv += pvT
+                            pvfdv.setText(decimalFormat.format(pvT))
+                        }
+                    } else {
+                        dividnd += dividnd * (fGr / 100) // Percent to decimal
+                        dividend.setText(decimalFormat.format(dividnd))
+
+                        val extraValue = dividnd / ((dr - fGr) / 100) // Percent to decimal
+                        // Create extraValueEditText
+                        val tbr = tableLayout.getChildAt(i - 1) as TableRow
+                        val evt = tbr.getChildAt(2) as EditText
+                        evt.setText(decimalFormat.format(extraValue))
+
+                        val pvT = (de + extraValue) * def
+                        pv += pvT
+                        val et = tbr.getChildAt(4) as EditText
+                        et.setText(decimalFormat.format(pvT))
                     }
-                } else {
-                    dividnd += dividnd * (fGr / 100) // Percent to decimal
-                    dividend.setText(((decimalFormat.format(dividnd))))
-
-                    val extraValue = dividnd / ((dr - fGr) / 100)
-                    // Create extraValueEditText
-                    val tbr = tableLayout.getChildAt(i - 1) as TableRow
-                    val evt = tbr.getChildAt(2) as EditText
-                    evt.setText(((decimalFormat.format(extraValue))))
-
-                    val pvT = (de + extraValue) * def
-                    pv += pvT
-                    val et = tbr.getChildAt(4) as EditText
-                    et.setText((decimalFormat.format(pvT)))
-
                 }
+                PV.setText(decimalFormat.format(pv))
+            } else {
+                Toast.makeText(this, "Fill Properly", Toast.LENGTH_SHORT).show()
             }
-            PV.setText((decimalFormat.format(pv)))
-        } else {
-            Toast.makeText(this, "Fill Properly", Toast.LENGTH_SHORT).show()
         }
     }
 }

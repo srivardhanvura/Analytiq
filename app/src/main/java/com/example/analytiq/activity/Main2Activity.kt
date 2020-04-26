@@ -122,6 +122,26 @@ class Main2Activity : AppCompatActivity() {
                         .replace(R.id.frame_layout_2, EMIOptions()).commit()
                     supportActionBar?.title = "EMI"
                 }
+
+                "Critical Value"->{
+                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,CriticalValueOptions()).commit()
+                    supportActionBar?.title="Critical Value"
+                }
+
+                "Currency"->{
+                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,CurrencyOptions()).commit()
+                    supportActionBar?.title="Currency"
+                }
+
+                "Basic Maths"->{
+                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,BasicMathsOptions()).commit()
+                    supportActionBar?.title="Basic Maths"
+                }
+
+                "Term Structure"->{
+                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,TermStructureOptions()).commit()
+                    supportActionBar?.title="Term Structure"
+                }
             }
         }
     }

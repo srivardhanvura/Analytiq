@@ -3,7 +3,7 @@
     package="com.example.analytiq">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.STORAGE" />
 
@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SingleCurrency"></activity>
+        <activity android:name=".activity.CouponBearingBond"></activity>
+        <activity android:name=".activity.UnitConverter" />
+        <activity android:name=".activity.LinearEquation" />
+        <activity android:name=".activity.CriticalValue" />
+        <activity android:name=".activity.SingleCurrency" />
         <activity android:name=".activity.CurrencyConversion" />
         <activity android:name=".activity.ProportionActivity" />
         <activity android:name=".activity.ProfitActivity" />
