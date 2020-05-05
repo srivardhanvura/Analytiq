@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="36sp"
                 android:layout_centerHorizontal="true"
-                android:text="Currency Conversion"
+                android:text="Currency History"
                 android:fontFamily="cursive"
                 android:textColor="#051573"
                 android:textStyle="bold"/>

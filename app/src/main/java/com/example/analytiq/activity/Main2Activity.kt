@@ -31,18 +31,21 @@ class Main2Activity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, InterestOptions()).commit()
                     supportActionBar?.title = "Interest"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.pink))
                 }
 
                 "YTM" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, YTMOptions()).commit()
                     supportActionBar?.title = "YTM"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_green))
                 }
 
                 "Present Value" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, PresentValueOptions()).commit()
                     supportActionBar?.title = "Present Value"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_blue))
                 }
 
                 "Bond Valuation" -> {
@@ -55,98 +58,117 @@ class Main2Activity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, EquityPricingOptions()).commit()
                     supportActionBar?.title = "Equity Pricing"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.pink))
                 }
 
                 "Var Calculation" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, VarOptions()).commit()
                     supportActionBar?.title = "Var Calculation"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_yellow))
                 }
 
                 "Depreciation" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, DepreciationOptions()).commit()
                     supportActionBar?.title = "Depreciation"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.dark_yellow))
                 }
 
                 "Correlation & Regression" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, CorrelationOptions()).commit()
                     supportActionBar?.title = "Correlation & Regression"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.lavender))
                 }
 
                 "Mensuration" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, MensurationOptions()).commit()
                     supportActionBar?.title = "Mensuration"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.dark_pink))
                 }
 
                 "NPV & IRR" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, NPV_IRROptions()).commit()
                     supportActionBar?.title = "NPV & IRR"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.gray))
                 }
-
-                "Power of Number" -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout_2, FactorialPowerOptions()).commit()
-                    supportActionBar?.title = "Power of Number"
-                }
-
                 "Discounting Factor" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, DiscountingFactorOptions()).commit()
                     supportActionBar?.title = "Discounting Factor"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.dark_pink))
                 }
 
                 "Mean & SD" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, MeanVarianceSDOptions()).commit()
                     supportActionBar?.title = "Mean Variance SD"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.yellow))
                 }
 
                 "Duration of Bond" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, DurationBondOptions()).commit()
                     supportActionBar?.title = "Duration of Bond"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.gray))
                 }
 
                 "Normal Distribution" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, NormalDistributionOptions()).commit()
                     supportActionBar?.title = "Normal Distribution"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.lavender))
                 }
 
-                "EMI"->{
+                "EMI" -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_layout_2, EMIOptions()).commit()
                     supportActionBar?.title = "EMI"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_yellow))
                 }
 
-                "Critical Value"->{
-                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,CriticalValueOptions()).commit()
-                    supportActionBar?.title="Critical Value"
+                "Critical Value" -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout_2, CriticalValueOptions()).commit()
+                    supportActionBar?.title = "Critical Value"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_green))
                 }
 
-                "Currency"->{
-                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,CurrencyOptions()).commit()
-                    supportActionBar?.title="Currency"
+                "Currency" -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout_2, CurrencyOptions()).commit()
+                    supportActionBar?.title = "Currency"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.pink))
                 }
 
-                "Basic Maths"->{
-                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,BasicMathsOptions()).commit()
-                    supportActionBar?.title="Basic Maths"
+                "Basic Maths" -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout_2, BasicMathsOptions()).commit()
+                    supportActionBar?.title = "Basic Maths"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_blue))
                 }
 
-                "Term Structure"->{
-                    supportFragmentManager.beginTransaction().replace(R.id.frame_layout_2,TermStructureOptions()).commit()
-                    supportActionBar?.title="Term Structure"
+                "Term Structure" -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout_2, TermStructureOptions()).commit()
+                    supportActionBar?.title = "Term Structure"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.yellow))
+                }
+
+                "US Share Market" -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout_2, ShareMarketOptions()).commit()
+                    supportActionBar?.title = "Share Market"
+                    toolabr.setBackgroundColor(resources.getColor(R.color.light_green))
                 }
             }
         }
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

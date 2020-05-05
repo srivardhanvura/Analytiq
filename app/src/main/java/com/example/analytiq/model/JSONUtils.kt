@@ -1,6 +1,5 @@
 package com.example.analytiq.model
 
-//import jdk.nashorn.internal.runtime.ScriptingFunctions.readLine
 import android.util.Log
 import java.io.BufferedReader
 import java.io.IOException
@@ -11,14 +10,15 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.nio.charset.Charset
 
-
 class JSONUtils {
     val LOG_TAG = JSONUtils::class.java.simpleName
 
 
     fun createURL(stringURL: String): URL {
 
-        var url: URL
+        var url: URL?=null
+
+        println("URL is $stringURL")
 
         try {
             url = URL(stringURL)
@@ -26,7 +26,9 @@ class JSONUtils {
             Log.e(LOG_TAG, "Error with creating URL ", e)
 
         }
-        return URL("")
+        if(url==null)
+            return URL("")
+        return url
     }
 
     @Throws(IOException::class)
@@ -41,27 +43,27 @@ class JSONUtils {
         var inputStream: InputStream? = null
 
         try {
-            httpURLConnection = url!!.openConnection() as HttpURLConnection
-            httpURLConnection!!.setReadTimeout(10000)
-            httpURLConnection!!.setConnectTimeout(15000)
-            httpURLConnection!!.setRequestMethod("GET")
-            httpURLConnection!!.connect()
+            httpURLConnection = url.openConnection() as HttpURLConnection
+            httpURLConnection.setReadTimeout(10000)
+            httpURLConnection.setConnectTimeout(15000)
+            httpURLConnection.setRequestMethod("GET")
+            httpURLConnection.connect()
 
-            if (httpURLConnection!!.getResponseCode() === 200) {
-                inputStream = httpURLConnection!!.getInputStream()
+            if (httpURLConnection.getResponseCode() == 200) {
+                inputStream = httpURLConnection.getInputStream()
                 jsonResponse = readFromStream(inputStream)
             } else {
-                Log.e(LOG_TAG, "Error Resonse Code:" + httpURLConnection!!.getResponseCode())
+                Log.e(LOG_TAG, "Error Resonse Code:" + httpURLConnection.getResponseCode())
 
             }
         } catch (e: IOException) {
             Log.e(LOG_TAG, "Problem retriving JSON", e)
         } finally {
             if (httpURLConnection != null) {
-                httpURLConnection!!.disconnect()
+                httpURLConnection.disconnect()
             }
             if (inputStream != null) {
-                inputStream!!.close()
+                inputStream.close()
             }
         }
         return jsonResponse

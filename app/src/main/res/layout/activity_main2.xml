@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#ffff"
+    android:orientation="vertical"
     tools:context=".activity.Main2Activity">
+    <!--#0A0B0B-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0A0B0B"
+        android:background="#ffff"
         android:minHeight="?actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+        android:theme="@style/ThemeOverlay.AppCompat.Light" />
 
     <FrameLayout
         android:id="@+id/frame_layout_2"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent" />
 
 </LinearLayout>

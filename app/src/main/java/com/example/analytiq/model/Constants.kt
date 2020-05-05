@@ -11,26 +11,19 @@ class Constants {
         val API_HISTORY_INITIAL = "historical/"
         val API_HISTORY_END = "?format=json"
 
-        //    public static final String API_URL = API_BASE_URL + API_KEY;
-        //    public static final String API_KEY = "a1218ef2ab484b7597b786caec010502";
-        //    public static final String API_BASE_URL = "https://openexchangerates.org/api/latest.json?app_id=";
-
     }
 
     internal object ShareMarket {
-        val API_BASE_URL = "https://www.alphavantage.co/query?"
+        val API_BASE_URL_STOCK = "https://financialmodelingprep.com/api/v3/stock/"
+        val API_MOST_ACTIVE = "actives"
+        val API_MOST_GAINER = "gainers"
+        val API_MOST_LOSER = "losers"
 
-        val API_FUNCTION_TIME_SERIES_INTRADAY = "function=TIME_SERIES_INTRADAY"
-        val API_FUNCTION_TIME_SERIES_DAILY = "function=TIME_SERIES_DAILY"
-        val API_FUNCTION_TIME_SERIES_DAILY_ADJUSTED = "function=TIME_SERIES_DAILY_ADJUSTED"
-        val API_FUNCTION_TIME_SERIES_WEEKLY = "function=TIME_SERIES_WEEKLY"
-        val API_FUNCTION_TIME_SERIES_WEEKLY_ADJUSTED = "function=TIME_SERIES_WEEKLY_ADJUSTED"
-        val API_FUNCTION_TIME_SERIES_MONTHLY = "function=TIME_SERIES_MONTHLY"
-        val API_FUNCTION_TIME_SERIES_MONTHLY_ADJUSTED = "function=TIME_SERIES_MONTHLY_ADJUSTED"
+        val API_BASE_URL_COMPANY_PROFILE =
+            "https://financialmodelingprep.com/api/v3/company/profile/"
+        val API_BASE_URL_QUOTE = "https://financialmodelingprep.com/api/v3/quote/"
 
-
-        val API_KEY = "apikey=31D9ROE7OO4XDML1"
-
+        val API_STOCK_LIST = "https://financialmodelingprep.com/api/v3/company/stock/list"
     }
 
 }

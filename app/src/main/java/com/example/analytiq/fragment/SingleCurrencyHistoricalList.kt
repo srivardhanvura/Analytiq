@@ -1,6 +1,5 @@
 package com.example.analytiq.fragment
 
-
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
@@ -22,6 +21,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.analytiq.fragment.SingleCurrencyHistoricalList.SingleCurrencyAdapter.ViewHolder
 import com.example.analytiq.model.Constants
+import com.example.analytiq.model.Constants.Currency
+import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
+import com.jjoe64.graphview.series.PointsGraphSeries
+import kotlinx.android.synthetic.main.fragment_single_currency_historical_list.*
 
 import org.json.JSONException
 import org.json.JSONObject
@@ -29,14 +34,12 @@ import org.json.JSONObject
 import java.io.IOException
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.ArrayList
-import java.util.Calendar
-import java.util.Date
 
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-
+import java.util.*
+import kotlin.math.min
 
 class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private val mMode: Int) :
     Fragment(), LoaderManager.LoaderCallbacks<ArrayList<SingleCurrencyHistoricalList.Currency>> {
@@ -89,8 +92,8 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
             if (currencyData.size == 0) {
                 noData!!.text = "No Internet Connection found!"
             }
-
         }
+
 
         singleCurrencyAdapter = SingleCurrencyAdapter(activity as Context, currencyData)
         singleCurrencyRecyclerview.adapter = singleCurrencyAdapter
@@ -98,9 +101,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<ArrayList<Currency>> {
-
         return CurrencyDataLoader(context!!, id, mCurrency, mCurrentDate)
-
     }
 
     override fun onLoadFinished(loader: Loader<ArrayList<Currency>>, data: ArrayList<Currency>) {
@@ -110,7 +111,6 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
             noData!!.text = null
             currencyData.clear()
             currencyData.addAll(data)
-
             singleCurrencyAdapter!!.notifyDataSetChanged()
         } else {
             progressBar!!.visibility = View.GONE
@@ -196,7 +196,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
             return currencyData
         }
 
-        private fun getJSONObjectHistory(
+        public fun getJSONObjectHistory(
             date: String,
             from: String,
             to: String,
@@ -215,7 +215,7 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
             var jsonObject: JSONObject? = null
             try {
                 val response = client.newCall(request).execute()
-                string = response.body().string()
+                string = response.body()?.string()
             } catch (e: IOException) {
                 e.printStackTrace()
             } finally {
@@ -290,92 +290,5 @@ class SingleCurrencyHistoricalList(currency: String, currentDate: Date, private 
         fun getCurrencyValue(): String {
             return mCurrencyValue
         }
-
-//        fun fetchCurrencyData(id: Int): ArrayList<Currency> {
-//
-//            val decimalFormat = DecimalFormat("#.###")
-//            val currencyData = ArrayList<Currency>()
-//            val baseCurrencyCode = "INR"
-//            val amount = 1.0
-//            val desiredCurrency = mCurrency.substring(2)
-//            val calendar = Calendar.getInstance()
-//            calendar.time = mCurrentDate
-//
-//            val LIMIT: Int
-//            when (id) {
-//                1 -> LIMIT = 30
-//                2 -> LIMIT = 24
-//                3 -> LIMIT = 36
-//                else -> LIMIT = 0
-//            }
-//            for (i in 0 until LIMIT) {
-//
-//                when (id) {
-//                    1 -> calendar.add(Calendar.DATE, -1)
-//                    2 -> calendar.add(Calendar.DAY_OF_WEEK_IN_MONTH, -1)
-//                    3 -> calendar.add(Calendar.MONTH, -1)
-//                    else -> {
-//                    }
-//                }
-//                val date = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
-//                val inputDate = SimpleDateFormat("MMM dd, yyyy").format(calendar.time)
-//                val jsonObject =
-//                    getJSONObjectHistory(date, baseCurrencyCode, desiredCurrency, amount)
-//                if (jsonObject != null) {
-//                    val rates: JSONObject
-//                    try {
-//                        rates = jsonObject.getJSONObject("rates")
-//                        val currency = rates.getJSONObject(desiredCurrency)
-//                        val currencyValue = 1 / currency.getDouble("rate")
-//                        currencyData.add(
-//                            Currency(
-//                                inputDate,
-//                                "₹ " + decimalFormat.format(currencyValue)
-//                            )
-//                        )
-//
-//                    } catch (ex: JSONException) {
-//                        ex.printStackTrace()
-//                    }
-//
-//                }
-//            }
-//            return currencyData
-//        }
-//
-//        private fun getJSONObjectHistory(
-//            date: String,
-//            from: String,
-//            to: String,
-//            amount: Double
-//        ): JSONObject? {
-//            val client = OkHttpClient()
-//
-//            val request = Request.Builder()
-//                .url(Constants.Currency.API_BASE_URL + Constants.Currency.API_HISTORY_INITIAL + date + Constants.Currency.API_HISTORY_END + "&to=" + to + "&from=" + from + "&amount=" + amount)
-//                .get()
-//                .addHeader("x-rapidapi-host", "currency-converter5.p.rapidapi.com")
-//                .addHeader("x-rapidapi-key", Constants.Currency.API_KEY)
-//                .build()
-//
-//            var string: String? = null
-//            var jsonObject: JSONObject? = null
-//            try {
-//                val response = client.newCall(request).execute()
-//                string = response.body().string()
-//            } catch (e: IOException) {
-//                e.printStackTrace()
-//            } finally {
-//                try {
-//                    if (string != null) {
-//                        jsonObject = JSONObject(string)
-//                    }
-//                } catch (e: JSONException) {
-//                    e.printStackTrace()
-//                }
-//
-//            }
-//            return jsonObject
-//        }
     }
 }

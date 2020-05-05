@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +15,7 @@
             android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="175dp"
-            android:background="#9ae0ff"
+            android:background="#8cf890"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -27,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Power of Number"
+                android:text="US Share Market"
                 android:textColor="#101010"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -38,11 +37,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/l" />
+                android:background="@drawable/stock_market" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:background="#FFFFFF"
@@ -54,22 +54,23 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:elevation="15dp"
                 app:cardCornerRadius="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/power_card"
+                    android:id="@+id/share_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/customb5"
+                    android:background="@drawable/customb2"
                     android:clickable="true">
 
                     <TextView
+                        android:id="@+id/textView33"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
+                        android:layout_centerInParent="true"
                         android:gravity="center"
-                        android:text="Factorial power"
+                        android:text="Share Market"
                         android:textColor="#FDFAFA"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -84,28 +85,67 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:visibility="invisible"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="17dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/customb"
+                    android:background="@drawable/customb2"
+                    android:clickable="true">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="Plain Vanilla Bond"
+                        android:textColor="#F8F5F5"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/aclonica" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="175dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="invisible">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="17dp">
+
+                <RelativeLayout
+                    android:layout_width="177dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/customb6"
                     android:clickable="true">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_centerHorizontal="false"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:text="Correlation"
+                        android:text="Perpetual Bond"
                         android:textColor="#FDFAFA"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        app:fontFamily="@font/alegreya_sc" />
+                        app:fontFamily="@font/aclonica" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

@@ -35,26 +35,29 @@ class DepreciationWrittenDown : AppCompatActivity() {
                 val s2 = b.getText().toString()
                 val s3 = c.getText().toString()
                 val s4 = d.getText().toString()
-                val x = Integer.parseInt(s1)
-                val y = Integer.parseInt(s2)
-                val z = Integer.parseInt(s3)
-                val w = Integer.parseInt(s4)
+                val x = (s1).toDouble()
+                val y = (s2).toDouble()
+                val z = (s3).toDouble()
+                val w = (s4).toDouble()
                 var i: Int
-                var U = 0
-                var dep_amount: Int
-                var amount: Int
-                val total_amount: Int
-                amount = x - y
+                var U = 0.0
+                var dep_amount: Double
+                var amount: Double
+                val total_amount: Double
+                amount = (x - y)
                 i = 0
                 while (i < z) {
-                    dep_amount = amount * w / 100
+                    dep_amount = amount * w / 100.0
                     U = U + dep_amount
                     amount = amount - dep_amount
                     i++
                 }
                 total_amount = x - U
-                dm.setText(U.toString())
-                av.setText(total_amount.toString())
+                dm.setText("%.3f".format(U))
+                av.setText("%.3f".format(total_amount))
+
+                findViewById<LinearLayout>(R.id.linear1).visibility=View.VISIBLE
+                findViewById<LinearLayout>(R.id.linear2).visibility=View.VISIBLE
 
                 dm.visibility = View.VISIBLE
                 av.visibility = View.VISIBLE

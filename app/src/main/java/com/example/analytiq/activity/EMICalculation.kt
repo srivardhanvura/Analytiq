@@ -43,8 +43,8 @@ class EMICalculation : AppCompatActivity() {
                 val total_amount = emi2 * n
                 val Interest = total_amount - p
                 ad.setText("Interest: " +"%.4f".format( Interest))
-                af.setText("Total Amount(in rupees)" + "%.4f".format(total_amount))
-                `as`.setText("EMI(in rupees)" + "%.4f".format(emi2))
+                af.setText("Total Amount(in rupees): " + "%.4f".format(total_amount))
+                `as`.setText("EMI(in rupees): " + "%.4f".format(emi2))
 
                 ad.visibility = View.VISIBLE
                 af.visibility = View.VISIBLE

@@ -1,8 +1,11 @@
 package com.example.analytiq.activity
 
 import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -16,6 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.analytiq.BuildConfig
 import com.example.analytiq.R
 import com.example.analytiq.fragment.AboutUsFragment
 import com.example.analytiq.fragment.Feedback
@@ -39,12 +43,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestStoragePermissions()
+        val sharedPref = getSharedPreferences("firstAsk", Context.MODE_PRIVATE)
+        val first = sharedPref.getBoolean("first", true)
+
+        if (first) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestStoragePermissions()
+                sharedPref.edit().putBoolean("first", false).apply()
+            }
         }
         mAuth = FirebaseAuth.getInstance()
 
@@ -72,14 +82,15 @@ class MainActivity : AppCompatActivity() {
 
         nav_view.setNavigationItemSelectedListener {
 
-            if (prev != null)
-                prev.isChecked = false
-            it.isCheckable = true
-            it.isChecked = true
-
             when (it.itemId) {
 
                 R.id.nav_home -> {
+
+                    if (prev != null)
+                        prev.isChecked = false
+                    it.isCheckable = true
+                    it.isChecked = true
+
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frame_layout, HomeFragment())
                         .commit()
@@ -88,6 +99,12 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_team -> {
+
+                    if (prev != null)
+                        prev.isChecked = false
+                    it.isCheckable = true
+                    it.isChecked = true
+
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frame_layout, TeamsFragment())
                         .commit()
@@ -95,6 +112,12 @@ class MainActivity : AppCompatActivity() {
                     drawer_layout.closeDrawers()
                 }
                 R.id.nav_info -> {
+
+                    if (prev != null)
+                        prev.isChecked = false
+                    it.isCheckable = true
+                    it.isChecked = true
+
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frame_layout, AboutUsFragment())
                         .commit()
@@ -117,10 +140,47 @@ class MainActivity : AppCompatActivity() {
                     drawer_layout.closeDrawers()
                 }
 
-                R.id.nav_help->{
-                    supportFragmentManager.beginTransaction().replace(R.id.main_frame_layout,Feedback()).commit()
-                    supportActionBar?.title="Help & Feedback"
+                R.id.nav_help -> {
+
+                    if (prev != null)
+                        prev.isChecked = false
+                    it.isCheckable = true
+                    it.isChecked = true
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frame_layout, Feedback()).commit()
+                    supportActionBar?.title = "Help & Feedback"
                     drawer_layout.closeDrawers()
+                }
+
+                R.id.nav_share -> {
+
+                    drawer_layout.closeDrawers()
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Hey checkout my app https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
+                    )
+                    intent.setType("text/plain")
+                    startActivity(intent)
+                }
+
+                R.id.nav_rate -> {
+                    drawer_layout.closeDrawers()
+                    try {
+                        packageManager.getPackageInfo("com.android.vending", 0)
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID)
+                        )
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID)
+                        )
+                        startActivity(intent)
+                    }
                 }
             }
             return@setNavigationItemSelectedListener true

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wall"
+    android:background="@drawable/pink_gradient"
     tools:context=".activity.Signup_Form">
 
     <LinearLayout
@@ -139,12 +139,12 @@
 
         <CheckBox
             android:id="@+id/box"
-            android:layout_width="370dp"
-            android:layout_height="37dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:onClick="onCheckboxClicked"
             android:text="I accept the terms and conditions"
-            android:textColor="#E3E2E2"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
         <Button
@@ -157,6 +157,19 @@
             android:textAllCaps="false"
             android:textColor="#ECECEC"
             android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:textColor="#000000"
+            android:text="@string/view_t_c"
+            android:textStyle="italic"
+            android:textSize="10dp"
+            android:typeface="serif"/>
 
     </LinearLayout>
 

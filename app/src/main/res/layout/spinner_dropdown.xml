@@ -11,5 +11,6 @@
     android:textAlignment="center"
     android:fontFamily="cursive"
     android:singleLine="true"
+    android:text="hi"
     android:textColor="@android:color/holo_red_dark"
     android:textSize="28dp" />

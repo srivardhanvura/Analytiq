@@ -8,11 +8,21 @@
     <color name="colorPrimaryDark1">#3700B3</color>
     <color name="colorAccent1">#03DAC5</color>
 
-    <color name="third">#B0FF9800</color>
-    <color name="second">#2196F3</color>
+    <color name="third">#6DEB70</color>
+    <color name="second">#5FB1F3</color>
     <color name="first">#D674E6</color>
 
     <color name="colorPrimary2">#6200EE</color>
     <color name="colorPrimaryDark2">#3700B3</color>
     <color name="colorAccent2">#03DAC5</color>
+
+    <color name="pink">#fbb3ae</color>
+    <color name="light_yellow">#fff385</color>
+    <color name="dark_yellow">#FFd248</color>
+    <color name="light_blue">#9ae0ff</color>
+    <color name="light_green">#8cf890</color>
+    <color name="gray">#c3c3c3</color>
+    <color name="lavender">#bec2f3</color>
+    <color name="dark_pink">#ff9aff</color>
+    <color name="yellow">#ffca18</color>
 </resources>

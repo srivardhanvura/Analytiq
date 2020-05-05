@@ -9,19 +9,72 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_llogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_llogo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CouponBearingBond"></activity>
-        <activity android:name=".activity.UnitConverter" />
-        <activity android:name=".activity.LinearEquation" />
-        <activity android:name=".activity.CriticalValue" />
-        <activity android:name=".activity.SingleCurrency" />
-        <activity android:name=".activity.CurrencyConversion" />
-        <activity android:name=".activity.ProportionActivity" />
-        <activity android:name=".activity.ProfitActivity" />
+        <activity
+            android:name=".activity.TandCActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.Signup_Form"></activity>
+        <activity
+            android:name=".activity.CategoryShareMarket"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SingleCompany"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShareMarket"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.VegetableActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CurrencyGraph"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TwoCurrenciesRelation"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CouponBearingBond"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.UnitConverter"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LinearEquation"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CriticalValue"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SingleCurrency"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CurrencyConversion"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProportionActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProfitActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.LCM_HCF"
             android:resizeableActivity="false"

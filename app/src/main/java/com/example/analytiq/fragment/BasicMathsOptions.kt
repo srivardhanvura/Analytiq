@@ -45,6 +45,14 @@ class BasicMathsOptions : Fragment() {
             startActivity(Intent(activity as Context,UnitConverter::class.java))
         }
 
+        view.findViewById<RelativeLayout>(R.id.factorial_card).setOnClickListener {
+            startActivity(Intent(activity as Context,FactorialPower::class.java))
+        }
+
+        view.findViewById<RelativeLayout>(R.id.vegetable_card).setOnClickListener {
+            startActivity(Intent(activity as Context,VegetableActivity::class.java))
+        }
+
         return view
     }
 

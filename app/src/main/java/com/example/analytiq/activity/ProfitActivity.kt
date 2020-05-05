@@ -82,5 +82,11 @@ class ProfitActivity : AppCompatActivity() {
                     Toast.makeText(this,"Margin cannot be greater than 100. Please input lower value",Toast.LENGTH_LONG ).show()
             }
         }
+        findViewById<Button>(R.id.clear).setOnClickListener {
+            first.text.clear()
+            second.text.clear()
+            third.text.clear()
+            fourth.text.clear()
+        }
     }
 }

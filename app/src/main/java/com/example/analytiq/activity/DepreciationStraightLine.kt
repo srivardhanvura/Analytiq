@@ -39,12 +39,14 @@ class DepreciationStraightLine : AppCompatActivity() {
                 val z = Integer.parseInt(s3)
                 val w = Integer.parseInt(s4)
                 val u = (x - y) * w
-                val v = u / 100
+                val v = u / 100.0
                 val U = v * z
-                dm.setText(U.toString())
+                dm.setText("%.3f".format(U))
                 val V = x - U
-                av.setText(V.toString())
+                av.setText("%.3f".format(V))
 
+                findViewById<LinearLayout>(R.id.linear1).visibility = View.VISIBLE
+                findViewById<LinearLayout>(R.id.linear2).visibility = View.VISIBLE
                 dm.visibility = View.VISIBLE
                 av.visibility = View.VISIBLE
             }

@@ -47,14 +47,14 @@ class TeamsFragment : Fragment() {
         list.add(
             TeamListData(
                 "Monu Kumar",
-                "IIT BHU(B.Tech Mining Engg.)\nSr.Backend Developer\nSetup Manager\nProgrammer,Android Developer &amp; Tech Enthusiast",
+                "IIT BHU(B.Tech Mining Engg.)\nSr.Backend Developer\nSetup Manager\nProgrammer,Android Developer & Tech Enthusiast",
                 R.drawable.kmonu
             )
         )
         list.add(
             TeamListData(
-                "Babi Mishra",
-                "University Institute of Technology,B.U\nSr.UI Developer\nUI and UX Team Leader\nJava, UI & UX",
+                "Doyel Mishra",
+                "University Institute of Technology,B.U\nSr.UI Developer\nUI and UX Team Leader\nAndroid App Development",
                 R.drawable.babi
             )
         )
@@ -70,7 +70,7 @@ class TeamsFragment : Fragment() {
         list.add(
             TeamListData(
                 "Thangadipelli Apoorva",
-                "B.Tech 3rd Year\nAssociate Developer\nSpecialization in C, C++, Java, Python, DBMS, HTML &amp; CSS",
+                "B.Tech 3rd Year\nAssociate Developer\nSpecialization in C, C++, Java, Python, DBMS, HTML & CSS",
                 R.drawable.appu
             )
         )

@@ -14,18 +14,19 @@
         android:fontFamily="@font/aref_ruqaa"
         android:gravity="center_horizontal"
         android:text="Feedback"
-        android:textColor="#A2883F"
-        android:textSize="38sp"
-        android:textStyle="bold" />
+        android:textColor="#CA3D3D"
+        android:textSize="47sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 
     <EditText
         android:id="@+id/et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:hint="Enter the message here"
-        android:textAlignment="center"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/btn"
@@ -38,5 +39,4 @@
         android:textColor="#ffff"
         android:textSize="18sp"
         android:textStyle="bold" />
-
 </LinearLayout>

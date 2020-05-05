@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
@@ -41,6 +42,11 @@ class Signup_Form : AppCompatActivity() {
         progress = findViewById(R.id.progress)
         progress.visibility = View.GONE
 
+        findViewById<TextView>(R.id.view).setText(Html.fromHtml(String.format(resources.getString(R.string.view_t_c))))
+
+        findViewById<TextView>(R.id.view).setOnClickListener {
+            startActivity(Intent(this, TandCActivity::class.java))
+        }
 
         btn_register.setOnClickListener {
 
@@ -99,13 +105,13 @@ class Signup_Form : AppCompatActivity() {
                                 startActivity(intent)
                                 finish()
                                 progress.visibility = View.GONE
-                                Snackbar.make(
-                                    this.currentFocus!!,
+                                Toast.makeText(
+                                    this,
                                     "Successfully registered. Please verify your email.",
-                                    Snackbar.LENGTH_LONG
+                                    Toast.LENGTH_LONG
                                 ).show()
                             } else {
-                                val cseq:CharSequence= it.exception?.message.toString()
+                                val cseq: CharSequence = it.exception?.message.toString()
                                 progress.visibility = View.GONE
                                 Snackbar.make(
                                     this.currentFocus!!,
@@ -115,7 +121,7 @@ class Signup_Form : AppCompatActivity() {
                             }
                         }
                     } else {
-                        val cseq:CharSequence= it.exception?.message.toString()
+                        val cseq: CharSequence = it.exception?.message.toString()
                         progress.visibility = View.GONE
                         Snackbar.make(
                             this.currentFocus!!,
@@ -127,6 +133,7 @@ class Signup_Form : AppCompatActivity() {
             }
         }
     }
+
     fun onCheckboxClicked(view: View) {
         val checked = (view as CheckBox).isChecked
     }

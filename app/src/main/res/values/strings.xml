@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Analytiq</string>
+    <string name="app_name">AnalytiQ</string>
 
     <string name="first">The monetary value of an asset decreases over time due to use, wear and tear or obsolescence. This decrease is measured as depreciation.\n \n
 Depreciation, i.e. a decrease in an asset\'s value, may be caused by a number of other factors as well such as unfavorable market conditions, etc. Machinery, equipment, currency are some examples of assets that are likely to depreciate over a specific period of time. Opposite of depreciation is appreciation which is increase in the value of an asset over a period of time.\n \n
@@ -77,4 +77,41 @@ The rate of Depreciation =\n\n
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tandc">Access to Dayton Superior Calculator Mobile Application (the Application”)
+
+It is your responsibility to ensure your computer or mobile device meets all the necessary technical specifications to enable you to access and use the Application.
+
+Operation of the Application
+
+We cannot guarantee the continuous, uninterrupted or error-free operability of the Application. There may be times when all, or certain features, parts or content, of the Application becomes unavailable (whether on a scheduled or unscheduled basis) or are modified, suspended or withdrawn by us, in our sole discretion, without notice to you. You agree that we will not be liable to you or to any third party for any unavailability, modification, suspension or withdrawal of any the Application, or any features, parts or content of any the Application.
+
+You may only use the Application for your own internal business use and only in accordance with these terms. Subject to the following sections, you may retrieve and display content from the Application on a computer or mobile device, print pages from our website and store the Application in electronic form.
+
+All rights granted to you under these Terms will terminate immediately in the event that you are in breach of any of them.
+
+Intellectual property rights
+
+All intellectual property rights in the Application and in any content of the Application (including text, graphics, software, photographs and other images, videos, sound, trademarks and logos) are owned by us or our licensors. Nothing in these terms gives you any rights in any intellectual property owned by us (or our licensors) and you acknowledge that you do not acquire any ownership rights by downloading or using the Application. In the event you print off, copy or store the Application as permitted by these Terms, you must ensure that any copyright, trademark or other intellectual property right notices contained in the original content are reproduced.
+
+Content and its intended use
+
+We may change the format and content of the Application from time to time. You agree that your use of the Application is on an “as is” and “as available” basis and at your sole risk. While we endeavor to make sure that all information contained in the Application (other than any user-generated content) is correct, it is not intended to amount to authority or advice on which reliance should be placed.
+
+The Application are not intended to constitute or form the basis of any advice or recommendation (professional or otherwise) or to be used in, or in relation to, any purchase or use of the products and services depicted in the Application nor as to the design, fabrication, constuction or repair of any structure or facility in or in connection with which any depicted product or service may be used.
+
+We do not make any representations as to the accuracy, completeness, currency, correctness, reliability, integrity, quality, fitness for purpose or originality of any content of the Application and, to the fullest extent permitted by law, all implied warranties, conditions or other terms of any kind are hereby excluded. To the fullest extent permitted by law, we accept no liability for any loss or damage of any kind incurred as a result of you or anyone else using the Application or relying on any of its content.
+
+We cannot and do not guarantee that any content of the Application will be free from viruses and/or other code that may have contaminating or destructive elements. It is your responsibility to implement appropriate security safeguards (including anti-virus and other security checks) to satisfy your particular requirements as to the safety and reliability of content.
+
+
+Your personal information
+
+Use of your personal information submitted to us (whether via our website or otherwise) is governed by the Privacy Policy stated here.
+
+Contacting us
+
+Please submit any questions you have about these terms and conditions or any problems concerning the Application by email to analytiqapp@gmail.com.</string>
+
+    <string name="view_t_c"><u>View terms and condtions</u></string>
 </resources>

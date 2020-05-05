@@ -37,8 +37,6 @@ class HomeFragment : Fragment() {
         listOfItems.add(HomeListData(R.drawable.button8, "Correlation & Regression", R.drawable.h))
         listOfItems.add(HomeListData(R.drawable.button, "Var Calculation", R.drawable.j))
         listOfItems.add(HomeListData(R.drawable.button2, "Equity Pricing", R.drawable.k1))
-        listOfItems.add(HomeListData(R.drawable.button4, "Power of Number", R.drawable.l))
-//        listOfItems.add(HomeListData(R.drawable.button6, "Bond Valuation", R.drawable.n))
         listOfItems.add(HomeListData(R.drawable.button5, "Discounting Factor", R.drawable.m))
         listOfItems.add(HomeListData(R.drawable.button3, "YTM", R.drawable.i))
         listOfItems.add(HomeListData(R.drawable.button6, "Duration of Bond", R.drawable.clock))
@@ -47,6 +45,7 @@ class HomeFragment : Fragment() {
         listOfItems.add(HomeListData(R.drawable.button7, "Term Structure", R.drawable.interest))
         listOfItems.add(HomeListData(R.drawable.button4, "Basic Maths", R.drawable.math))
         listOfItems.add(HomeListData(R.drawable.button2, "Currency", R.drawable.currency))
+        listOfItems.add(HomeListData(R.drawable.button3, "US Share Market", R.drawable.stock_market))
 
         val adapter = HomeAdapter(activity as Context,listOfItems,activity as Activity)
         val layout = LinearLayoutManager(activity as Context)

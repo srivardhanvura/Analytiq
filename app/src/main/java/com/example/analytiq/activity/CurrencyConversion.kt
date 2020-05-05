@@ -161,7 +161,7 @@ class CurrencyConversion : AppCompatActivity(),
                     keyArray.add(key)
                 }
                 for (i in 0 until keyArray.size) {
-                    val key = keyArray.get(i)
+                    val key = keyArray[i]
                     if (key != "INR") {
                         val currency: JSONObject
                         try {
@@ -202,7 +202,7 @@ class CurrencyConversion : AppCompatActivity(),
             var string: String? = null
             try {
                 val response = client.newCall(request).execute()
-                string = response.body().string()
+                string = response.body()?.string()
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -232,7 +232,7 @@ class CurrencyConversion : AppCompatActivity(),
             var jsonObject: JSONObject? = null
             try {
                 val response = client.newCall(request).execute()
-                string = response.body().string()
+                string = response.body()?.string()
             } catch (e: IOException) {
                 e.printStackTrace()
             } finally {

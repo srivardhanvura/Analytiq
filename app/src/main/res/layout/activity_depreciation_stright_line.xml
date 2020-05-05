@@ -2,183 +2,200 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/straight_line_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/r"
     android:padding="18dp"
     android:scrollbars="none"
-    android:id="@+id/straight_line_scroll"
     tools:context=".activity.DepreciationStraightLine">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <!--    heading-->
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="Depreciation Straight Line Method"
-        android:textColor="#051573"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:fontFamily="cursive" />
+        <!--    heading-->
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Depreciation Straight Line Method"
+            android:textColor="#051573"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:fontFamily="cursive" />
 
 
-    <!--1st et heading-->
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView3"
-        android:layout_marginTop="30dp"
-        android:text="Amount"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        <!--1st et heading-->
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView3"
+            android:layout_marginTop="30dp"
+            android:text="Amount"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
 
-    <!--1st et -->
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView4"
-        android:ems="10"
-        android:hint="Enter Amount"
-        android:inputType="number"
-        android:textSize="18sp" />
+        <!--1st et -->
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView4"
+            android:ems="10"
+            android:hint="Enter Amount"
+            android:inputType="number"
+            android:textSize="18sp" />
 
-    <!--2nd et heading-->
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editText"
-        android:layout_marginTop="10dp"
-        android:text="Salvage Cost"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        <!--2nd et heading-->
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText"
+            android:layout_marginTop="10dp"
+            android:text="Salvage Cost"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
 
-    <!--2nd et -->
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView5"
-        android:ems="10"
-        android:hint="Enter Salvage Cost"
-        android:inputType="number"
-        android:textSize="18sp" />
+        <!--2nd et -->
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView5"
+            android:ems="10"
+            android:hint="Enter Salvage Cost"
+            android:inputType="number"
+            android:textSize="18sp" />
 
-    <!--3rd et heading-->
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editText2"
-        android:layout_marginTop="10dp"
-        android:text="Time(in years)"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        <!--3rd et heading-->
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText2"
+            android:layout_marginTop="10dp"
+            android:text="Time(in years)"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
 
-    <!--3rd et -->
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView6"
-        android:ems="10"
-        android:hint="Enter Time"
-        android:inputType="number"
-        android:textSize="18sp" />
+        <!--3rd et -->
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView6"
+            android:ems="10"
+            android:hint="Enter Time"
+            android:inputType="number"
+            android:textSize="18sp" />
 
-    <!--4th et heading-->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editText3"
-        android:layout_marginTop="10dp"
-        android:text="Depreciation Rate"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        <!--4th et heading-->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText3"
+            android:layout_marginTop="10dp"
+            android:text="Depreciation Rate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
 
-    <!--4th et -->
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:ems="10"
-        android:hint="Enter Depreciation Rate"
-        android:inputType="number"
-        android:textSize="18sp" />
+        <!--4th et -->
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:ems="10"
+            android:hint="Enter Depreciation Rate"
+            android:inputType="number"
+            android:textSize="18sp" />
 
-    <!--1st result heading-->
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editText4"
-        android:layout_marginTop="15dp"
-        android:text="Depreciation Amount:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText4"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <!--1st result heading-->
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Depreciation Amount:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp" />
+
+            <!--1st result-->
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Amount"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
 
 
-    <!--2nd result heading-->
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView7"
-        android:layout_marginTop="15dp"
-        android:text="Asset value:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear1"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone">
 
-    <!--1st result-->
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editText4"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="20dp"
-        android:text="Amount"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp"
-        android:visibility="invisible"/>
+            <!--2nd result heading-->
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asset value:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp" />
 
-    <!--2nd result-->
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView10"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:text="asset_value"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp"
-        android:visibility="invisible"/>
+            <!--2nd result-->
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="asset_value"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                android:visibility="invisible" />
 
-    <!--    Calculate-->
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView11"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_rounded"
-        android:text="Calculate"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#777777"
-        android:textSize="18sp" />
+        </LinearLayout>
+
+        <!--    Calculate-->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear2"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_rounded"
+            android:text="Calculate"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#777777"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </ScrollView>

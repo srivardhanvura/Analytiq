@@ -52,13 +52,13 @@ class ForgotPassword : AppCompatActivity() {
                         val intent = Intent(this@ForgotPassword, Login_Form::class.java)
                         startActivity(intent)
                         finish()
-                        Snackbar.make(
-                            this.currentFocus!!,
+                        Toast.makeText(
+                            this,
                             "Password has been sent to your mail",
-                            Snackbar.LENGTH_SHORT
+                            Toast.LENGTH_SHORT
                         ).show()
                     } else {
-                        val cseq:CharSequence= it.exception?.message.toString()
+                        val cseq: CharSequence = it.exception?.message.toString()
                         Snackbar.make(
                             this.currentFocus!!,
                             cseq,

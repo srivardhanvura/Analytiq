@@ -17,24 +17,6 @@
     </group>
 
     <group android:checkableBehavior="single">
-        <item
-            android:title="Profile">
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/nav_profile"
-                        android:icon="@drawable/ic_person_black_24dp"
-                        android:title="Profile" />
-
-                    <item
-                        android:id="@+id/nav_logout"
-                        android:icon="@drawable/ic_reply_black_24dp"
-                        android:title="Logout" />
-                </group>
-            </menu>
-        </item>
-
 
         <item android:title="Communicate">
 
@@ -48,21 +30,32 @@
                 <item
                     android:id="@+id/nav_rate"
                     android:icon="@drawable/ic_rate_review_black_24dp"
-                    android:title="Rate Us"/>
+                    android:title="Rate Us" />
 
                 <item
                     android:id="@+id/nav_help"
                     android:icon="@drawable/ic_help_black_24p"
-                    android:title="Help &amp; Feedback"/>
+                    android:title="Help &amp; Feedback" />
             </menu>
         </item>
     </group>
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_info"
-            android:icon="@drawable/about"
-            android:title="About Us" />
 
+        <item android:title="Others">
+            <menu>
+                <item
+                    android:id="@+id/nav_info"
+                    android:icon="@drawable/about"
+                    android:title="About Us" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_reply_black_24dp"
+                    android:title="Logout" />
+
+
+            </menu>
+        </item>
     </group>
 </menu>

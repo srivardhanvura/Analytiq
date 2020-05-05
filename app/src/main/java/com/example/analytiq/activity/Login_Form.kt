@@ -9,6 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.example.analytiq.R
+import com.example.analytiq.util.ConnectivityManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -62,10 +63,10 @@ class Login_Form : AppCompatActivity() {
 
         btn_login.setOnClickListener {
 
-            val view=this.currentFocus
-            if(view!=null){
-                val imm=getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(view.windowToken,0)
+            val view = this.currentFocus
+            if (view != null) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view.windowToken, 0)
             }
 
             val enteredemail = txtemail.text.toString().trim()
@@ -80,7 +81,11 @@ class Login_Form : AppCompatActivity() {
             } else if (!Patterns.EMAIL_ADDRESS.matcher(enteredemail).matches()) {
 //                Toast.makeText(this@Login_Form, "Please enter proper email-id", Toast.LENGTH_SHORT)
 //                    .show()
-                Snackbar.make(this.currentFocus!!,"Please enter proper email-id",Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    this.currentFocus!!,
+                    "Please enter proper email-id",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             } else {
                 mAuth.signInWithEmailAndPassword(enteredemail, enteredpass)
                     .addOnCompleteListener(this) {
@@ -110,7 +115,7 @@ class Login_Form : AppCompatActivity() {
                             }
                         } else {
                             progress.visibility = View.GONE
-                            val cseq:CharSequence= it.exception?.message.toString()
+                            val cseq: CharSequence = it.exception?.message.toString()
                             Snackbar.make(
                                 this.currentFocus!!,
                                 cseq,
@@ -123,8 +128,17 @@ class Login_Form : AppCompatActivity() {
         }
 
         googleSignin.setOnClickListener {
-            val intent: Intent = gsClient.signInIntent
-            startActivityForResult(intent, RC_SIGN_IN)
+            if (ConnectivityManager().checkConnectivity(this)) {
+                val intent: Intent = gsClient.signInIntent
+                startActivityForResult(intent, RC_SIGN_IN)
+            }else{
+                Toast.makeText(
+                    this,
+                    "No internet connection",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
         }
     }
 
@@ -142,7 +156,8 @@ class Login_Form : AppCompatActivity() {
                     firebaseAuthWithGoogle(account)
                 }
             } catch (e: ApiException) {
-                Snackbar.make(this.currentFocus!!, "Google sign in failed:(", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(this.currentFocus!!, "Google sign in failed:(", Snackbar.LENGTH_LONG)
+                    .show()
             }
         }
     }
@@ -162,7 +177,8 @@ class Login_Form : AppCompatActivity() {
 //                        .show()
                 }
             } else {
-                Snackbar.make(this.currentFocus!!, "Google sign in failed:(", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(this.currentFocus!!, "Google sign in failed:(", Snackbar.LENGTH_LONG)
+                    .show()
             }
         }
     }
